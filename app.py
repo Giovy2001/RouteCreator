@@ -9,6 +9,10 @@ from scripts import database_handler
 
 database_handler.init_db()
 
+
+from scripts import image_handler
+image_handler.init_image(app.config["UPLOAD_FOLDER"])
+
 @app.route("/")
 def index():
     return render_template("index.html", routes=database_handler.get_routes())
