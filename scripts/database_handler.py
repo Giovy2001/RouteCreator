@@ -13,9 +13,11 @@ conn.execute("""CREATE TABLE IF NOT EXISTS routes(id INTEGER PRIMARY KEY AUTOINC
 conn.commit()
 
 def get_routes():
+    conn.sync()
     return conn.execute("SELECT * FROM routes").fetchall()
 
 def get_route(id):
+    conn.sync()
     return conn.execute("SELECT * FROM routes WHERE id=?", (id,)).fetchone()
 
 def add_route(image_url, holds):
