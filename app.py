@@ -1,32 +1,17 @@
 from flask import Flask, render_template, request, redirect, url_for
-import sqlite3
 import os
 import json
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "static/uploads"
 
-def get_db():
-    return sqlite3.connect("routes.db")
+from scripts import database_handler
 
-def init_db():
-    db = get_db()
-    db.execute("""
-    CREATE TABLE IF NOT EXISTS routes(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        image TEXT,
-        holds TEXT
-    )
-    """)
-    db.commit()
-
-init_db()
+database_handler.init_db()
 
 @app.route("/")
 def index():
-    db = get_db()
-    routes = db.execute("SELECT * FROM routes").fetchall()
-    return render_template("index.html", routes=routes)
+    return render_template("index.html", routes=database_handler.get_routes())
 
 @app.route("/create", methods=["GET", "POST"])
 def create():
@@ -38,12 +23,7 @@ def create():
         path = os.path.join(app.config["UPLOAD_FOLDER"], image.filename)
         image.save(path)
 
-        db = get_db()
-        db.execute(
-            "INSERT INTO routes(image, holds) VALUES (?,?)",
-            (image.filename, holds)
-        )
-        db.commit()
+        database_handler.add_route(image, holds)
 
         return redirect(url_for("index"))
 
@@ -52,8 +32,7 @@ def create():
 @app.route("/route/<int:id>")
 def view(id):
 
-    db = get_db()
-    route = db.execute("SELECT * FROM routes WHERE id=?", (id,)).fetchone()
+    route = database_handler.get_route(id)
 
     holds = json.loads(route[2])
 
