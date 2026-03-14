@@ -1,0 +1,43 @@
+<h1>Via</h1>
+
+<canvas id="canvas"></canvas>
+
+
+<script id="holds-data" type="application/json">
+    {{ holds | tojson }}
+</script>
+
+
+<script>
+
+    const holds = JSON.parse(
+        document.getElementById("holds-data").textContent
+    );
+    let img = new Image()
+    img.src = "/static/uploads/{{image}}"
+
+
+    let canvas = document.getElementById("canvas")
+    let ctx = canvas.getContext("2d")
+
+    img.onload = function(){
+
+        canvas.width = img.width
+        canvas.height = img.height
+
+        ctx.drawImage(img,0,0)
+
+        ctx.strokeStyle = "red"
+        ctx.lineWidth = 3
+
+        holds.forEach(h=>{
+
+            ctx.beginPath()
+            ctx.arc(h.x,h.y,h.r,0,Math.PI*2)
+            ctx.stroke()
+
+        })
+
+    }
+
+</script>

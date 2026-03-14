@@ -1,0 +1,23 @@
+<h1>Vie di arrampicata</h1>
+
+<link rel="stylesheet" href="/static/css/index.css" type="text/css">
+
+<a href="/create" class="new-route">+ Crea nuova via</a>
+
+<div class="grid">
+
+    {% for route in routes %}
+
+    <a href="/route/{{route[0]}}" class="card">
+
+        <img src="/static/uploads/{{route[1]}}">
+
+        <div class="card-title">
+            Via {{route[0]}}
+        </div>
+
+    </a>
+
+    {% endfor %}
+
+</div>
