@@ -10,6 +10,7 @@ conn.sync()
 
 # Qui aggiungo il nome della via e il grado
 conn.execute("""CREATE TABLE IF NOT EXISTS routes(id INTEGER PRIMARY KEY AUTOINCREMENT, image TEXT, holds TEXT)""")
+conn.commit()
 
 def get_routes():
     return conn.execute("SELECT * FROM routes").fetchall()
@@ -22,3 +23,4 @@ def add_route(image_url, holds):
         "INSERT INTO routes(image, holds) VALUES (?,?)",
         (image_url, holds)
     )
+    conn.commit()
