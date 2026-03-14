@@ -5,7 +5,7 @@ url = os.getenv("TURSO_DATABASE_URL")
 token = os.getenv("TURSO_AUTH_TOKEN")
 name = "palaenrosadira-routes-sql"
 
-conn = libsql.connect(database=name, sync_url=url, auth_token=token)
+conn = libsql.connect(database=url, auth_token=token)
 
 # Qui aggiungo il nome della via e il grado
 conn.execute("""CREATE TABLE IF NOT EXISTS routes(id INTEGER PRIMARY KEY AUTOINCREMENT, image TEXT, holds TEXT)""")
