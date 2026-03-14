@@ -1,31 +1,24 @@
-import sqlite3
+import os
+import libsql
 
-def get_db():
-    return sqlite3.connect("routes.db")
+url = os.getenv("TURSO_DATABASE_URL")
+token = os.getenv("TURSO_AUTH_TOKEN")
+name = "palaenrosadira-routes-sql"
 
-def init_db():
-    db = get_db()
-    db.execute("""
-    CREATE TABLE IF NOT EXISTS routes(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        image TEXT,
-        holds TEXT
-    )
-    """)
-    db.commit()
+conn = libsql.connect(database=name, sync_url=url, auth_token=token)
+conn.sync()
+
+# Qui aggiungo il nome della via e il grado
+conn.execute("""CREATE TABLE IF NOT EXISTS routes(id INTEGER PRIMARY KEY AUTOINCREMENT, image TEXT, holds TEXT)""")
 
 def get_routes():
-    db = get_db()
-    return db.execute("SELECT * FROM routes").fetchall()
+    return conn.execute("SELECT * FROM routes").fetchall()
 
 def get_route(id):
-    db = get_db()
-    return db.execute("SELECT * FROM routes WHERE id=?", (id,)).fetchone()
+    return conn.execute("SELECT * FROM routes WHERE id=?", (id,)).fetchone()
 
-def add_route(image, holds):
-    db = get_db()
-    db.execute(
+def add_route(image_url, holds):
+    conn.execute(
         "INSERT INTO routes(image, holds) VALUES (?,?)",
-        (image.filename, holds)
+        (image_url, holds)
     )
-    db.commit()

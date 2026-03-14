@@ -1,6 +1,5 @@
-import os
+import vercel_blob
 
 
-def init_image(upload_path: str):
-    if not os.path.isdir(upload_path):
-        os.makedirs(upload_path)
+def put(image_name, image_data):
+    return vercel_blob.put(f"{image_name}.jpg", image_data, {"addRandomSuffix": "true"}).get("url")

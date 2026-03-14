@@ -1,17 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
-import os
 import json
 
 app = Flask(__name__)
-app.config["UPLOAD_FOLDER"] = "static/uploads"
 
 from scripts import database_handler
 
-database_handler.init_db()
-
-
 from scripts import image_handler
-image_handler.init_image(app.config["UPLOAD_FOLDER"])
+
 
 @app.route("/")
 def index():
@@ -24,10 +19,9 @@ def create():
         image = request.files["image"]
         holds = request.form["holds"]
 
-        path = os.path.join(app.config["UPLOAD_FOLDER"], image.filename)
-        image.save(path)
+        image_url = image_handler.put(image.filename, image.read())
 
-        database_handler.add_route(image, holds)
+        database_handler.add_route(image_url, holds)
 
         return redirect(url_for("index"))
 

@@ -1,7 +1,6 @@
-DEBUG = True
-
 from app import app
 
+DEBUG = False
 
 if __name__ == "__main__":
     if DEBUG:
@@ -14,6 +13,7 @@ if __name__ == "__main__":
 
 """
 TODO:
+
 
     [ ] Sistemare CSS di ogni pagina
         [ ] Particolare attenzione a come viene visualizzato da telefono
