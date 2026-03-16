@@ -23,6 +23,7 @@ def create_route():
     
     if request.method == "POST":
         session['holds'] = request.form.get("jsonHolds")
+        session['last_uploaded_image_url'] = image_url
         
         return redirect(url_for("save_route")) 
 
@@ -37,8 +38,6 @@ def save_route():
         author = request.form.get("routeAuthor")
         name = request.form.get("routeName")
         description = request.form.get("routeDescription")
-    
-        print(holds)
     
         holds_array = []
         for hold_helement in json.loads(holds):
