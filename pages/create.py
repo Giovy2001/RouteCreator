@@ -1,8 +1,7 @@
 from flask import render_template, request, redirect, url_for, session, jsonify
-from __main__ import app, image_handler, database_handler
+from scripts import image_handler, database_handler
 import json
 
-@app.route("/select_image", methods=["GET", "POST"])
 def select_image():
     if request.method == "POST":
 
@@ -17,7 +16,6 @@ def select_image():
     return render_template("select_image.html")
 
 
-@app.route("/create_route", methods=["GET", "POST"])
 def create_route():
     image_url = session.get('last_uploaded_image_url', None)
     if not image_url:
@@ -31,7 +29,6 @@ def create_route():
     return render_template("create_route.html", data={"image_url":image_url})
 
 
-@app.route("/save_route", methods=["GET", "POST"])
 def save_route():    
     if request.method == "POST":
         image_url = session.get('last_uploaded_image_url', None)
