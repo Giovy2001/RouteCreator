@@ -1,0 +1,45 @@
+<head>
+  <link rel="stylesheet" href="/static/css/create.css" type="text/css">
+  <script src="/static/js/holds_selector.js" defer></script>
+</head>
+
+<h2>Creazione Blocco</h2>
+<h3>Seleziona prese blocco</h3>
+
+
+<label>Tipo di presa:</label>
+<select id="hold_type_select">
+  <option value="start">Start</option>
+  <option value="middle">Normale</option>
+  <option value="top">Top</option>
+</select>
+
+<label>Utilizzo presa:</label>
+<select id="hold_use_select">
+  <option value="both">Normale</option>
+  <option value="foot">Solo piedi</option>
+  <option value="hand">Solo mani</option>
+</select>
+
+<label>Dimensione presa:</label>
+<input type="range" id="hold_size" min="1" max="10" step="0.5" value="4">
+
+<button type="button" id="delete_hold">Elimina presa</button>
+
+<form method="POST" enctype="multipart/form-data">
+  <div class="controls">
+    <button id="save_route">Finalizza blocco</button>
+  </div>
+  <input id="jsonHoldsHidden" name="jsonHolds" type="hidden">
+</form>
+
+<div id="holdContainer" style="position:relative;">
+  <img id="routeImage" src="" alt="Foto via">
+</div>
+
+
+
+<script>
+  let uploadedImageURL = {{data|tojson}}["image_url"];
+  document.getElementById('routeImage').src = uploadedImageURL;
+</script>

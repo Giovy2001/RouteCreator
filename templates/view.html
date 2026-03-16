@@ -1,43 +1,51 @@
-<h1>Via</h1>
+<head>
+    <link rel="stylesheet" href="/static/css/create.css" type="text/css">
+</head>
 
-<canvas id="canvas"></canvas>
+<h1>{{ route_name }}</h1>
+
+<h2>Autore: {{ author }}</h2>
+
+<h3>{{ description }}</h3>
 
 
-<script id="holds-data" type="application/json">
-    {{ holds | tojson }}
-</script>
-
+<div id="holdContainer" style="position:relative;">
+  <img id="routeImage" src="" alt="Foto via">
+</div>
 
 <script>
+    let holds = {{ holds | tojson }}
+    
+    let img = document.getElementById("routeImage")
+    img.src = "{{ image }}"
 
-    const holds = JSON.parse(
-        document.getElementById("holds-data").textContent
-    );
-    let img = new Image()
-    img.src = "{{image}}"
+    let holdContainer = document.getElementById("holdContainer")
 
+    holds.forEach(h => {
+        let data = {
+            id: h.id,
+            x: h.x,
+            y: h.y,
+            scale: h.r,
+            type: h.type,
+            use: h.use
+        };
 
-    let canvas = document.getElementById("canvas")
-    let ctx = canvas.getContext("2d")
+        let hold = document.createElement("div");
+        hold.classList.add("hold");
+        updateHoldStyle(hold,data);
+        hold.dataset.id = data.id;
+        holdContainer.appendChild(hold);
+    })
 
-    img.onload = function(){
+    function updateHoldStyle(hold,data){
+        hold.style.left=`${data.x*100}%`;
+        hold.style.top=`${data.y*100}%`;
+        hold.style.transform=`translate(-50%,-50%) scale(${data.scale})`;
 
-        canvas.width = img.width
-        canvas.height = img.height
+        hold.classList.remove("start","middle","top");
 
-        ctx.drawImage(img,0,0)
-
-        ctx.strokeStyle = "red"
-        ctx.lineWidth = 3
-
-        holds.forEach(h=>{
-
-            ctx.beginPath()
-            ctx.arc(h.x,h.y,h.r,0,Math.PI*2)
-            ctx.stroke()
-
-        })
-
+        hold.classList.add(data.type);
     }
 
 </script>

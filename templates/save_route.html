@@ -1,0 +1,27 @@
+<h3>Nome e Descrizione</h3>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <input type="text" id="routeName" name="routeName" placeholder="Nome della via" required>
+
+    <textarea id="routeDescription" name="routeDescription" rows="4" placeholder="Descrizione della via"></textarea>
+
+    <label id="routeAuthor">Anonimo</label>
+    
+    <div class="controls">
+        <button id="finish">Salva</button>
+    </div>
+    
+    <input type="hidden" id="routeAuthorHidden" name="routeAuthor">
+</form>
+
+<script>
+    const authorLabel = document.getElementById('routeAuthor');
+    const authorInput = document.getElementById('routeAuthorHidden');
+
+    let author = localStorage.getItem('boulderUsername');
+    if (author != null) {
+        authorLabel.textContent = author;
+        authorInput.value = author;
+    }
+</script>

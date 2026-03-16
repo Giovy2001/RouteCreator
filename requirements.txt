@@ -2,3 +2,4 @@ flask
 waitress
 libsql
 vercel_blob
+pillow

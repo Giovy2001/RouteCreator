@@ -1,8 +1,21 @@
-<h1>Vie di arrampicata</h1>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+    <script src="/static/js/username.js" defer></script>
+</head>
 
-<link rel="stylesheet" href="/static/css/index.css" type="text/css">
+<h1>PalaEnrosadira</h1>
+<h3>Blocchi della comunit&agrave;</h3>
+<hr />
 
-<a href="/create" class="new-route">+ Crea nuova via</a>
+<div id="userBar">
+  <label>Nome utente:</label>
+  <input type="text" id="usernameInput" placeholder="Scrivi il tuo nome">
+  <button onclick="saveUsername()">Salva</button>
+</div>
+<a href="/select_image" class="new-route">+ Crea nuova via</a>
+<hr />
+
 
 <div class="grid">
 
@@ -10,14 +23,18 @@
 
     <a href="/route/{{route[0]}}" class="card">
 
-        <img src="{{route[1]}}">
+        <img src="{{route[3]}}">
 
         <div class="card-title">
-            Via {{route[0]}}
+            {{route[1]}}
         </div>
-
+        <label class="card-author">
+            Autore: {{route[2]}}
+        </label>
+        &emsp;
     </a>
 
     {% endfor %}
 
 </div>
+
