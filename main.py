@@ -11,14 +11,14 @@ image_handler.init_glob_database()
 
 from pages import create, index, view
 
-DEBUG = False
+app.add_url_rule("/", view_func=index.index)
+app.add_url_rule("/route/<int:route_id>", view_func=view.view_route)
+app.add_url_rule("/select_image", view_func=create.select_image, methods=["GET", "POST"])
+app.add_url_rule("/create_route", view_func=create.create_route, methods=["GET", "POST"])
+app.add_url_rule("/save_route", view_func=create.save_route, methods=["GET", "POST"])
 
 if __name__ == "__main__":
-    app.add_url_rule("/", view_func=index.index)
-    app.add_url_rule("/route/<int:route_id>", view_func=view.view_route)
-    app.add_url_rule("/select_image", view_func=create.select_image, methods=["GET", "POST"])
-    app.add_url_rule("/create_route", view_func=create.create_route, methods=["GET", "POST"])
-    app.add_url_rule("/save_route", view_func=create.save_route, methods=["GET", "POST"])
+    DEBUG = False
     
     if DEBUG:
         app.run(debug=True)
