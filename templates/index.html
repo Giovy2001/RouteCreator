@@ -1,40 +1,72 @@
 <head>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400&display=swap" rel="stylesheet">
+    <!-- Title -->
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PalaEnrosadira - Blocchi della comunità</title>
+
+    <link rel="stylesheet" href="/static/css/body.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/input.css" type="text/css">
     <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+
+    <!-- Save username in the local browser data -->
     <script src="/static/js/username.js" defer></script>
 </head>
 
-<h1>PalaEnrosadira</h1>
-<h3>Blocchi della comunit&agrave;</h3>
-<hr />
+<!-- Background grain -->
+<div class="grain"></div>
 
-<div id="userBar">
-  <label>Nome utente:</label>
-  <input type="text" id="usernameInput" placeholder="Scrivi il tuo nome">
-  <button onclick="saveUsername()">Salva</button>
-</div>
-<a href="/select_image" class="new-route">+ Crea nuova via</a>
-<hr />
+<body>
+    <!-- Title -->
+    <p>&emsp;</p>
+    <div class="title">
+        <h1>PalaEnrosadira</h1>
+        <h3>Blocchi della comunit&agrave;</h3>
+    </div>
 
-
-<div class="grid">
-
-    {% for route in routes %}
-
-    <a href="/route/{{route[0]}}" class="card">
-
-        <img src="{{route[3]}}">
-
-        <div class="card-title">
-            {{route[1]}}
+    <!-- User selector -->
+    <p>&emsp;</p>
+    <div class="userBar">
+        <div class="userLabel">
+            <a>Nome utente:</a>
         </div>
-        <label class="card-author">
-            Autore: {{route[2]}}
-        </label>
-        &emsp;
-    </a>
+        <div class="usernameWrapper">
+            <input type="text" id="usernameInput" class="flex-input" placeholder="Scrivi il tuo nome">
+            <button type="button" onclick="saveUsername()">Salva</button>
+        </div>
+    </div>
 
-    {% endfor %}
+    <!-- New route button -->
+    <div class="new-route">
+        <button onclick="window.location.href='/select_image';" style="width: 100%;">Aggiungi un nuovo blocco</button>
+    </div>
+    <p>&emsp;</p>
 
-</div>
+    <!-- Grid -->
+    <div class="grid">
+        {% for route in routes %}
+    
+        <!-- Card spawner -->
+        <a href="/route/{{route[0]}}" class="card">
+            <img src="{{route[3]}}">
+            <div class="card-title">
+                {{route[1]}}
+            </div>
+            <div class="card-author">
+                {{route[2]}}
+            </div>
+        </a>
+    
+        {% endfor %}
+    </div>
+</body>
+
+
+
+
+
 

@@ -18,7 +18,12 @@ app.add_url_rule("/create_route", view_func=create.create_route, methods=["GET",
 app.add_url_rule("/save_route", view_func=create.save_route, methods=["GET", "POST"])
 
 if __name__ == "__main__":
-    DEBUG = False
+    """ 
+    This runs only if the program is started from the main.py files
+    The result is that it's used only when I test/debug the web page in a local network 
+    """
+    
+    DEBUG: bool = False
     
     if DEBUG:
         app.run(debug=True)

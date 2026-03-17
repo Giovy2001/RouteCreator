@@ -1,51 +1,49 @@
 <head>
-    <link rel="stylesheet" href="/static/css/create.css" type="text/css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400&display=swap" rel="stylesheet">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PalaEnrosadira - Visualizza blocco</title>
+
+    <link rel="stylesheet" href="/static/css/body.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/input.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/view.css" type="text/css">
+
+    <!-- Holds viewer -->
+    <script src="/static/js/holds_viewer.js" defer></script>
 </head>
 
-<h1>{{ route_name }}</h1>
+<!-- Background grain -->
+<div class="grain"></div>
 
-<h2>Autore: {{ author }}</h2>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>{{route_name}}</h1>
+            <h2 class="author">Tracciatorer: {{author}}</h2>
+        </div>
+        <p>&emsp;</p>
+        <div class="description">
+            <a>{{description}}</a>
+        </div>
+    </div>
 
-<h3>{{ description }}</h3>
+    <div id="holdContainer" style="position:relative;">
+      <img id="routeImage" src="" alt="Foto via">
+    </div>
 
-
-<div id="holdContainer" style="position:relative;">
-  <img id="routeImage" src="" alt="Foto via">
-</div>
+    <div class="back">
+        <button onclick="window.location.href='/';">Torna alla pagina iniziale</button>
+    </div>
+</body>
 
 <script>
     let holds = {{ holds | tojson }}
-    
+
     let img = document.getElementById("routeImage")
     img.src = "{{ image }}"
-
-    let holdContainer = document.getElementById("holdContainer")
-
-    holds.forEach(h => {
-        let data = {
-            id: h.id,
-            x: h.x,
-            y: h.y,
-            scale: h.r,
-            type: h.type,
-            use: h.use
-        };
-
-        let hold = document.createElement("div");
-        hold.classList.add("hold");
-        updateHoldStyle(hold,data);
-        hold.dataset.id = data.id;
-        holdContainer.appendChild(hold);
-    })
-
-    function updateHoldStyle(hold,data){
-        hold.style.left=`${data.x*100}%`;
-        hold.style.top=`${data.y*100}%`;
-        hold.style.transform=`translate(-50%,-50%) scale(${data.scale})`;
-
-        hold.classList.remove("start","middle","top");
-
-        hold.classList.add(data.type);
-    }
-
 </script>
+
+

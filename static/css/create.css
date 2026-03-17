@@ -1,16 +1,41 @@
 body {
-    font-family: Arial;
-    background:#fff9f0;
-    margin:20px;
-
-
     touch-action:none;
-
-    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+h1, h2, h3 {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.slider {
+    margin: 5px;
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 30px; /* Specified height */
+    background: transparent;
+    border: 2px solid white;
+    outline: none; /* Remove outline */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 15px; /* Set a specific slider handle width */
+  height: 30px; /* Slider handle height */
+  background: white; /* Green background */
+}
+
+.tableSelector {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
 .step {
     display: none;
     width: 99%;
@@ -25,15 +50,9 @@ img#routeImage {
     display: block;
     margin: 0 auto;
 }
-.controls {
-    margin-top: 10px;
-    align-items: center;
-}
 
 button {
-    margin: 5px;
-    padding: 10px;
-    font-size: 16px;
+    width: 100%;
 }
 
 input, textarea, select {
@@ -58,8 +77,6 @@ input, textarea, select {
     width:24px;
     height:24px;
     border-radius:50%;
-    /*background:white;*/
-    /*border: 2px solid rgb(255, 255, 255);*/
     transform:translate(-50%,-50%);
 }
 

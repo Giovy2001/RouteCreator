@@ -1,9 +1,29 @@
 <head>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400&display=swap" rel="stylesheet">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PalaEnrosadira - Visualizza blocco</title>
+
+    <link rel="stylesheet" href="/static/css/body.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/input.css" type="text/css">
+
     <link rel="stylesheet" href="/static/css/create.css" type="text/css">
+
 </head>
 
-<h2>Creazione Blocco</h2>
-<h3>Seleziona Foto</h3>
+<!-- Background grain -->
+<div class="grain"></div>
+
+<body>
+    <h2>Creazione Blocco</h2>
+    <h3>Seleziona Foto</h3>
+</body>
+
+
+<!-- TODO nascondere il vero file e creare una label sopra penso -->
 
 <form method="POST" enctype="multipart/form-data">
     <input type="file" name="image" accept="image/*" id="imageInput">

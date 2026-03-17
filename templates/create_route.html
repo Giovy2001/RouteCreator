@@ -1,35 +1,60 @@
 <head>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400&display=swap" rel="stylesheet">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PalaEnrosadira - Visualizza blocco</title>
+
+  <link rel="stylesheet" href="/static/css/body.css" type="text/css">
+  <link rel="stylesheet" href="/static/css/input.css" type="text/css">
+
   <link rel="stylesheet" href="/static/css/create.css" type="text/css">
+
   <script src="/static/js/holds_selector.js" defer></script>
 </head>
 
-<h2>Creazione Blocco</h2>
-<h3>Seleziona prese blocco</h3>
+<!-- Background grain -->
+<div class="grain"></div>
 
 
-<label>Tipo di presa:</label>
-<select id="hold_type_select">
-  <option value="start">Start</option>
-  <option value="middle">Normale</option>
-  <option value="top">Top</option>
-</select>
+<body>
+  <!-- TODO tre pallini 2/3 fasi -->
+  <h3>Seleziona prese blocco</h3>
 
-<label>Utilizzo presa:</label>
-<select id="hold_use_select">
-  <option value="both">Normale</option>
-  <option value="foot">Solo piedi</option>
-  <option value="hand">Solo mani</option>
-</select>
+  <div class="tableSelector">
+    <div class="tipo">
+      <label>Tipo di presa:</label>
+      <select id="hold_type_select">
+        <option value="start">Start</option>
+        <option value="middle">Normale</option>
+        <option value="top">Top</option>
+      </select>
+    </div>
 
-<label>Dimensione presa:</label>
-<input type="range" id="hold_size" min="1" max="10" step="0.5" value="4">
+    <div class="uso">
+      <label>Utilizzo presa:</label>
+      <select id="hold_use_select">
+        <option value="both">Normale</option>
+        <option value="foot">Solo piedi</option>
+        <option value="hand">Solo mani</option>
+      </select>
+    </div>
+  </div>
 
-<button type="button" id="delete_hold">Elimina presa</button>
+  <label>Dimensione presa:</label>
+  <input type="range" class="slider" id="hold_size" min="0.5" max="8" step="0.2" value="2">
+
+</body>
+
 
 <form method="POST" enctype="multipart/form-data">
-  <div class="controls">
+  <div class="tableSelector">
+    <button type="button" id="delete_hold">Elimina presa</button>
     <button id="save_route">Finalizza blocco</button>
   </div>
+
   <input id="jsonHoldsHidden" name="jsonHolds" type="hidden">
 </form>
 
@@ -40,6 +65,6 @@
 
 
 <script>
-  let uploadedImageURL = {{data|tojson}}["image_url"];
+  let uploadedImageURL = {{ data| tojson}}["image_url"];
   document.getElementById('routeImage').src = uploadedImageURL;
 </script>
