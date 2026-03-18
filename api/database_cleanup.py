@@ -13,18 +13,18 @@ def database_cleanup() -> int:
         int: The total number of cleanup actions performed (deleted routes + deleted images).
     """
     
-    images_urls: list = [entry.lower() for entry in image_handler.list()]
-    database_urls: list = [entry[3].lower() for entry in database_handler.get_all_routes()]
+    images_urls: list = [entry for entry in image_handler.list()]
+    database_urls: list = [entry[3] for entry in database_handler.get_all_routes()]
     
     cleanup_actions: int = 0
     
     for url in database_urls:
-        if not url in images_urls:
+        if not url.lower() in [i.lower() for i in images_urls]:
             database_handler.del_route(url)
             cleanup_actions+=1
     
     for url in images_urls:
-        if not url in database_urls:
+        if not url.lower() in [i.lower() for i in database_urls]:
             image_handler.delete(url)
             cleanup_actions+=1
     
