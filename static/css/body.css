@@ -9,11 +9,21 @@ body {
     -webkit-touch-callout: none;
 
     /* Backgound and margin */
-    background-color: #2e343f;
+    background-color: #1C2026;
     margin: 20px;
 }
 
 /* background grain multiply */
+.background_color {
+    background-color: #2e343f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+}
+
 .grain {
     position: fixed;
     top: 0;
@@ -22,7 +32,7 @@ body {
     width: 100%;
     z-index: -1;
    
-    background-image: url("grain.png");
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
     background-size: 300px 530px; 
     mix-blend-mode: multiply;
     opacity: 0.8;

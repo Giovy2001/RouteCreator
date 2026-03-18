@@ -6,6 +6,9 @@ body {
     mix-blend-mode: soft-light;
     opacity: 1;
 }
+.background_color {
+    background-color: #DCD3C8;
+}
 .title {
     display: flex;
     flex-direction: column;
@@ -27,17 +30,13 @@ h1, h2 {
     margin-top: 10px;
 }
 button {
-    width: 100%;
+    position: absolute;
+    bottom: 0;
+    width: 90%;
     background-color: #161616;
     border-color: #161616;
     color: white;
 }
-.back {
-    position: absolute;
-    bottom: 20px;
-    width: 90%;
-}
-
 
 img#routeImage {
     max-width: 100%;

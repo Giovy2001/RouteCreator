@@ -16,22 +16,23 @@
 </head>
 
 <!-- Background grain -->
+<div class="background_color"></div>
 <div class="grain"></div>
 
 <body>
     <div class="container">
         <div class="title">
-            <h1>{{route_name}}</h1>
-            <h2 class="author">Tracciatorer: {{author}}</h2>
+            <h1>{{route[1]}}</h1>
+            <h2 class="author">Tracciatorer: {{route[2]}}</h2>
         </div>
         <p>&emsp;</p>
         <div class="description">
-            <a>{{description}}</a>
+            <a>{{route[4]}}</a>
         </div>
     </div>
 
     <div id="holdContainer" style="position:relative;">
-      <img id="routeImage" src="" alt="Foto via">
+      <img id="routeImage" src={{route[3]}} alt="Foto via">
     </div>
 
     <div class="back">
@@ -41,9 +42,6 @@
 
 <script>
     let holds = {{ holds | tojson }}
-
-    let img = document.getElementById("routeImage")
-    img.src = "{{ image }}"
 </script>
 
 

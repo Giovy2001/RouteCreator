@@ -6,9 +6,6 @@ def view_route(route_id):
     holds_array  = database_handler.get_holds(route_id)
 
     return render_template("view.html",
-        route_name=route_object[1],
-        author=route_object[2],
-        image=route_object[3],
-        description=route_object[4],
+        route=route_object,
         holds=holds_array
     )

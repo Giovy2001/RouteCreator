@@ -19,6 +19,15 @@ def init_sql_database() -> None:
     url = os.getenv("TURSO_DATABASE_URL")
     token = os.getenv("TURSO_AUTH_TOKEN")
     conn = libsql.connect(database=url, auth_token=token)
+    
+def init_local_database() -> None:
+    """
+    Initializes the SQL database from local space.
+    """
+    
+    global conn
+    conn = libsql.connect("static\\local_database\\sql_database.db")
+    
 
 def get_all_routes():
     cursor = conn.cursor()
