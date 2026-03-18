@@ -34,9 +34,6 @@ def handler(request):
               Format: {"status": "ok"}
     """
 
-    if request.headers.get("x-vercel-cron") != "1":
-        return {"error": "forbidden"}, 403
-    
     database_cleanup()
     return {
         "status": "ok"
