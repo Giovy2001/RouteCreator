@@ -5,16 +5,6 @@
       "use": "@vercel/python"
     }
   ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/main.py"
-    }
-  ],
   "crons": [
     {
       "path": "/api/database_cleanup",
