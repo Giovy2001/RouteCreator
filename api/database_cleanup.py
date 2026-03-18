@@ -34,6 +34,9 @@ def database_cleanup() -> int:
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
+database_handler.init_sql_database()
+image_handler.init_glob_database()
+
 @app.route('/api/database_cleanup', methods=['GET'])
 def init_cron():
     """
