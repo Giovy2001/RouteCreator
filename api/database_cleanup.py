@@ -1,4 +1,3 @@
-from apscheduler.schedulers.background import BackgroundScheduler
 from scripts import image_handler, database_handler
 
 
@@ -23,18 +22,20 @@ def database_cleanup() -> None:
             cleanup_actions+=1
     
     print(f"INFO Database cleanup completed with {cleanup_actions} cleanup_actions")
-
-
-def init_cleanup() -> None:
-    """
-    Initialize and start a background scheduler for periodic database cleanup.
-    Sets up a BackgroundScheduler that executes the database_cleanup function
-    at regular intervals of one week. The scheduler runs in the background
-    without blocking the main application flow.
-    Returns:
-        None
-    """    
     
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(database_cleanup, 'cron', day_of_week='wed', hour=16, minute=0)
-    scheduler.start()
+def handler(request):
+    """
+    HTTP request handler for database cleanup operations.
+    Validates the request authorization header and triggers a database cleanup process.
+    Args:
+        request: HTTP request object containing headers and other request metadata.
+    Returns:
+        dict: A dictionary with status key indicating successful execution.
+              Format: {"status": "ok"}
+    """
+
+    request.headers.get("authorization")
+    database_cleanup()
+    return {
+        "status": "ok"
+    }

@@ -1,5 +1,8 @@
 """
 TODO:
+
+    [ ] Aggiungere Condizioni di utilizzo, vietato pubblicare foto di persone o condividere informazioni personali.
+
     ## Funzionalità ##
     
     [ ] add created time to database
