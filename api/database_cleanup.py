@@ -50,3 +50,4 @@ def init_cron():
     logging.info('Received cleanup request at /api/database_cleanup')
     cleanup_actions: int = database_cleanup()
     logging.info(f'Database cleanup completed with {cleanup_actions} cleanup_actions')
+    return {"status": "ok"}
