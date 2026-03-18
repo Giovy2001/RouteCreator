@@ -20,6 +20,9 @@ def init_local_database() -> None:
 def put(image_full_name: str, image_data) -> str:
     """
     Processes the image to optimize it and commit it to the initialized database.
+    It supports deletion from two storage backends:
+    - 'blob': Deletes from Vercel Blob storage
+    - 'local': Deletes from the local filesystem
 
     Args:
         image_full_name (str): Name of the image
@@ -54,6 +57,58 @@ def put(image_full_name: str, image_data) -> str:
 
     # Returns the result of the commit function
     return UPLOAD_FUNCTIONS[upload_function_name](image_name, cropped_img)
+
+def list() -> list:
+    """
+    Retrieve a list of URLs from the configured storage backend.
+    Dynamically fetches URLs based on the `upload_function_name` configuration:
+    - "blob": Retrieves URLs from Vercel Blob storage
+    - "local": Retrieves file paths from local storage directory
+    
+    Returns:
+        list: A list of URLs or file paths from the storage backend.
+    Note:
+        The actual storage backend used is determined by the `upload_function_name`
+        variable, which must be set in the calling scope.
+    """
+    
+    match upload_function_name:
+        case "blob":
+            urls = [i["url"] for i in vercel_blob.list()["blobs"]]
+        case "local":
+            from glob import glob
+            urls = glob(r"static\local_database\Images\*")
+      
+    return urls
+        
+def delete(image_url: str) -> None:
+    """
+    Delete an image from the specified storage service.
+    This function removes an image based on the configured upload function.
+    It supports deletion from two storage backends:
+    - 'blob': Deletes from Vercel Blob storage
+    - 'local': Deletes from the local filesystem
+    
+    Args:
+        image_url (str): The URL or path of the image to delete.
+                        For blob storage: the blob URL or identifier.
+                        For local storage: the file path to the image.
+    Returns:
+        None
+    Raises:
+        FileNotFoundError: If the local file does not exist (local storage only).
+        Exception: If deletion from Vercel Blob fails (blob storage only).
+    Note:
+        The actual storage backend used is determined by the `upload_function_name`
+        variable, which must be set in the calling scope.
+    """
+    
+    match upload_function_name:
+        case "blob":
+            vercel_blob.delete(image_url)
+        case "local":
+            from os import remove
+            remove(image_url)
 
 def local_commit(image_name: str, img: Image.Image) -> str:
     """

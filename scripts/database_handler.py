@@ -30,14 +30,48 @@ def init_local_database() -> None:
     
 
 def get_all_routes():
+    """
+    Retrieve all routes from the database.
+    Returns:
+        list: A list of tuples containing all routes from the routes table.
+              Each tuple represents a row with all columns from the routes table.
+              Returns an empty list if no routes exist.
+    Raises:
+        DatabaseError: If there is an error executing the query or connecting to the database.
+    """
+    
     cursor = conn.cursor()
     return cursor.execute("SELECT * FROM routes").fetchall()
 
 def get_route(id):
+    """
+    Retrieve a single route record from the database by its ID.
+    Args:
+        id: The unique identifier of the route to retrieve.
+    Returns:
+        tuple or None: A tuple containing all columns of the matching route record,
+                       or None if no route with the given ID exists.
+    Raises:
+        DatabaseError: If there is an error executing the database query.
+    """
+    
     cursor = conn.cursor()
     return cursor.execute("SELECT * FROM routes WHERE id=?", (id,)).fetchone()
 
-def get_holds(id) -> list:
+def get_holds(id: int) -> list:
+    """
+    Retrieve all holds associated with a specific route.
+    Args:
+        id: The route ID to fetch holds for.
+    Returns:
+        list: A list of dictionaries, each containing hold information with keys:
+            - x (float): The x-coordinate of the hold.
+            - y (float): The y-coordinate of the hold.
+            - r (str): The radius or size property of the hold.
+            - type (str): The type of the hold.
+            - use (str): The usage or classification of the hold.
+    """
+    
     cursor = conn.cursor()
     holds = cursor.execute("SELECT * FROM holds WHERE route_id = ?", (id,)).fetchall()
     
@@ -51,10 +85,32 @@ def get_holds(id) -> list:
     
     return holds_list
 
+def del_route(image_url: str) -> None:
+    """
+    Delete a route and all associated holds from the database.
+    This function removes a route record and its related holds entries
+    from the database based on the provided image URL.
+    Args:
+        image_url (str): The image URL of the route to delete.
+    Raises:
+        TypeError: If the image_url is not found in the database (fetchone() returns None).
+    Returns:
+        None
+    """
+    
+    cursor = conn.cursor()
+    route_id: int = cursor.execute("SELECT * FROM routes WHERE image_url = ?", (image_url,)).fetchone()[0]
+    cursor.execute(
+        "DELETE FROM holds WHERE route_id = ?",
+        (route_id,)
+    )    
+    cursor.execute(
+        "DELETE FROM routes WHERE id = ?",
+        (route_id,)
+    )
+    conn.commit()
 
 def add_route(name:str, author:str, image_url:str, description:str, holds:list) -> None:
-    cursor = conn.cursor()
-    
     """
     Adds a new climbing route and its associated holds to the database.
     Parameters:
@@ -71,6 +127,7 @@ def add_route(name:str, author:str, image_url:str, description:str, holds:list) 
     Returns:
         None
     """
+    cursor = conn.cursor()
 
     # Insert the route into the routes table
     cursor.execute(

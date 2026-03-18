@@ -25,6 +25,9 @@ app.add_url_rule("/select_image", view_func=create.select_image, methods=["GET",
 app.add_url_rule("/create_route", view_func=create.create_route, methods=["GET", "POST"])
 app.add_url_rule("/save_route", view_func=create.save_route, methods=["GET", "POST"])
 
+from scripts import database_cleanup
+database_cleanup.init_cleanup()
+
 if __name__ == "__main__":
     """ 
     This runs only if the program is started from the main.py files
