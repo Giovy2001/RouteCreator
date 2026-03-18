@@ -34,7 +34,7 @@ def database_cleanup() -> int:
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
-@app.route('/api/database_cleanup', methods=['POST'])
+@app.route('/api/database_cleanup', methods=['GET'])
 def init_cron():
     """
     Initialize and execute a scheduled database cleanup task.
