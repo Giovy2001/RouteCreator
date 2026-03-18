@@ -1,8 +1,17 @@
+from flask import Flask
+import logging
 from scripts import image_handler, database_handler
 
 
-def database_cleanup() -> None:
-    print("INFO Database cleanup started")
+def database_cleanup() -> int:
+    """
+    Synchronize the database and image storage by removing orphaned entries.
+    Compares routes stored in the database with images in the image handler.
+    Removes any database routes that don't have corresponding images and deletes
+    any images that don't have corresponding database routes.
+    Returns:
+        int: The total number of cleanup actions performed (deleted routes + deleted images).
+    """
     
     images_urls: list = [entry.lower() for entry in image_handler.list()]
     database_urls: list = [entry[3].lower() for entry in database_handler.get_all_routes()]
@@ -12,29 +21,29 @@ def database_cleanup() -> None:
     for url in database_urls:
         if not url in images_urls:
             database_handler.del_route(url)
-            print("DELETE Entry SQL database")
             cleanup_actions+=1
     
     for url in images_urls:
         if not url in database_urls:
             image_handler.delete(url)
-            print("DELETE Entry BLOB database")
             cleanup_actions+=1
     
-    print(f"INFO Database cleanup completed with {cleanup_actions} cleanup_actions")
-    
-def handler(request):
-    """
-    HTTP request handler for database cleanup operations.
-    Validates the request authorization header and triggers a database cleanup process.
-    Args:
-        request: HTTP request object containing headers and other request metadata.
-    Returns:
-        dict: A dictionary with status key indicating successful execution.
-              Format: {"status": "ok"}
-    """
+    return cleanup_actions
 
-    database_cleanup()
-    return {
-        "status": "ok"
-    }
+
+logging.basicConfig(level=logging.INFO)
+app = Flask(__name__)
+
+@app.route('/api/database_cleanup', methods=['POST'])
+def init_cron():
+    """
+    Initialize and execute a scheduled database cleanup task.
+    This function logs the receipt of a cleanup request, performs database cleanup operations,
+    and logs the completion status with the number of cleanup actions performed.
+    Returns:
+        Logs cleanup request initiation and completion status.
+    """
+    
+    logging.info('Received cleanup request at /api/database_cleanup')
+    cleanup_actions: int = database_cleanup()
+    logging.info(f'Database cleanup completed with {cleanup_actions} cleanup_actions')
