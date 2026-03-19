@@ -15,14 +15,10 @@ TODO:
     ## Estetica ##
 
     [ ] Manca l'icona del sito favicon
-
-    [ ] Rendere le prese più visibili
-        [ ] Inserire lettera P (piede), M (mano) quando necessario
-        [ ] Separare il cerchio colorato dall'outline per avere sempre lo stesso spessore (o trovare modo di fare ciò)
-        [ ] 
-
+    
     [ ] Sistemare CSS di ogni pagina
         [ ] Particolare attenzione a come viene visualizzato da telefono
+        [ ] Sistemare grafica delle creazione blocco
     
     ## Pulizia ##
     [ ] Mettere ordine nel codice
