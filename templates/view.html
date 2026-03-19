@@ -9,9 +9,13 @@
 
     <link rel="stylesheet" href="/static/css/body.css" type="text/css">
     <link rel="stylesheet" href="/static/css/input.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/return_button.css" type="text/css">
+    
+    <link rel="stylesheet" href="/static/css/holds.css" type="text/css">
     <link rel="stylesheet" href="/static/css/view.css" type="text/css">
 
     <!-- Holds viewer -->
+    <script src="/static/js/holds_handler.js" defer></script>
     <script src="/static/js/holds_viewer.js" defer></script>
 </head>
 
@@ -23,16 +27,48 @@
     <div class="container">
         <div class="title">
             <h1>{{route[1]}}</h1>
-            <h2 class="author">Tracciatorer: {{route[2]}}</h2>
+            <h2 class="author">Tracciatore: {{route[2]}}</h2>
+            <a>{{route[5]}}</a>
         </div>
-        <p>&emsp;</p>
+        <p>&emsp;</p>        
         <div class="description">
             <a>{{route[4]}}</a>
         </div>
     </div>
-
     <div id="holdContainer" style="position:relative;">
       <img id="routeImage" src={{route[3]}} alt="Foto via">
+    </div>
+
+    <h2>Legenda:</h2>
+    <div class="legend">
+
+        <div class="legend-column">
+            <div class="legend-item">
+                <span class="dot start"></span>
+                <span class="label">Start</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="dot middle"></span>
+                <span class="label">Middle</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="dot top"></span>
+                <span class="label">Top</span>
+            </div>
+        </div>
+        <div class="legend-column">
+            <div class="legend-item">
+                <span class="label">M</span>
+                <span class="label">Solo mani</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="label">P</span>
+                <span class="label">Solo piedi</span>
+            </div>
+        </div>
     </div>
 
     <div class="back">

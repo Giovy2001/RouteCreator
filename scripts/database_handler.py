@@ -1,5 +1,6 @@
 import os
 import libsql
+from datetime import datetime
 
 def init_sql_database() -> None:
     """
@@ -130,9 +131,10 @@ def add_route(name:str, author:str, image_url:str, description:str, holds:list) 
     cursor = conn.cursor()
 
     # Insert the route into the routes table
+    formatted_today = datetime.today().strftime(r'%d-%m-%Y')
     cursor.execute(
-        "INSERT INTO routes(name, author, image_url, description) VALUES (?,?,?,?)",
-        (name, author, image_url, description)
+        "INSERT INTO routes(name, author, image_url, description, date) VALUES (?,?,?,?,?)",
+        (name, author, image_url, description, formatted_today)
     )
     
     # Get the last autogenerate id
