@@ -1,6 +1,7 @@
 body {
     background-color: #DCD3C8;
     color: #161616;
+    height: 120%;
 }
 .grain {
     mix-blend-mode: soft-light;
@@ -29,6 +30,7 @@ h1, h2 {
     margin: 0;
     margin-top: 10px;
 }
+
 button {
     background-color: #161616;
     border-color: #161616;
@@ -43,19 +45,22 @@ img#routeImage {
     margin: 0 auto;
 }
 
-#holdContainer{
-    position:relative;
+/* Legenda */
+.legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
 }
-
-.hold{
-    position:absolute;
-    width:24px;
-    height:24px;
-    border-radius:50%;
-    border: 1px solid rgb(255, 255, 255);
-    transform:translate(-50%,-50%);
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
-
-.start{ background:rgba(0, 255, 13, 0.3); }
-.middle{ background:rgba(0, 162, 255, 0.3); }
-.top{ background:rgba(255, 174, 0, 0.3); }
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.dot.start{ background-color:rgb(0, 255, 13); }
+.dot.middle{ background-color:rgb(0, 153, 255); }
+.dot.top{ background-color:rgb(255, 0, 0); }

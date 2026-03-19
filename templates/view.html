@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/static/css/body.css" type="text/css">
     <link rel="stylesheet" href="/static/css/input.css" type="text/css">
     <link rel="stylesheet" href="/static/css/return_button.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/holds.css" type="text/css">
     <link rel="stylesheet" href="/static/css/view.css" type="text/css">
 
     <!-- Holds viewer -->
@@ -34,6 +35,38 @@
     </div>
     <div id="holdContainer" style="position:relative;">
       <img id="routeImage" src={{route[3]}} alt="Foto via">
+    </div>
+
+    <h2>Legenda:</h2>
+    <div class="legend">
+
+        <div class="legend-column">
+            <div class="legend-item">
+                <span class="dot start"></span>
+                <span class="label">Start</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="dot middle"></span>
+                <span class="label">Middle</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="dot top"></span>
+                <span class="label">Top</span>
+            </div>
+        </div>
+        <div class="legend-column">
+            <div class="legend-item">
+                <span class="label">M</span>
+                <span class="label">Solo mani</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="label">P</span>
+                <span class="label">Solo piedi</span>
+            </div>
+        </div>
     </div>
 
     <div class="back">

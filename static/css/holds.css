@@ -1,0 +1,24 @@
+#holdContainer{
+    position:relative;
+}
+
+.hold{
+    position:absolute;
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    border: 1px solid rgb(255, 255, 255);
+    transform:translate(-50%,-50%);
+}
+.use{
+    position: absolute;
+
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: white;
+}
+
+.start{ background:rgba(0, 255, 13, 0.3); }
+.middle{ background:rgba(0, 153, 255, 0.3); }
+.top{ background:rgba(255, 0, 0, 0.3); }
