@@ -1,0 +1,8 @@
+body {
+    padding-bottom: 80px;
+}
+button {
+    position: fixed;
+    bottom: 10px;
+    width: 90%;
+}

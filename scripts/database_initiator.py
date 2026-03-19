@@ -21,7 +21,8 @@ def init_database(mode: str) -> None:
         name TEXT,
         author TEXT,
         image_url TEXT,
-        description TEXT
+        description TEXT,
+        date TEXT
     )""")
     conn.execute("""CREATE TABLE IF NOT EXISTS holds(
         id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -68,3 +68,29 @@ h1, h2, h3 {
     margin-top: 0;
     margin-bottom: 10px;
 }
+
+.use-condition {
+    margin-top: 20px;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    text-align: center;
+    align-items: center;
+    line-height: 1;
+}
+.icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    color: #161616;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    top: -2px;
+    left: -4px;
+}
