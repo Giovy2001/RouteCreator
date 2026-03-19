@@ -15,6 +15,11 @@ holds.forEach(h => {
     updateHoldStyle(hold, data);
     hold.dataset.id = data.id;
     holdContainer.appendChild(hold);
+
+    let use = document.createElement("label");
+    use.textContent = data.use;
+    use.classList.add("use");
+    hold.appendChild(use);
 })
 
 function updateHoldStyle(hold, data) {

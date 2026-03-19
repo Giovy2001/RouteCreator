@@ -30,9 +30,6 @@ h1, h2 {
     margin-top: 10px;
 }
 button {
-    position: absolute;
-    bottom: 0;
-    width: 90%;
     background-color: #161616;
     border-color: #161616;
     color: white;
