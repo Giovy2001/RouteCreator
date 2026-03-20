@@ -17,16 +17,19 @@ else:
     database_handler.init_sql_database()
     image_handler.init_glob_database()
 
-from pages import create, index, view
+from pages import create, index, view, edit
 
-app.add_url_rule("/",                       view_func=index.index)
-app.add_url_rule("/use_condition",          view_func=index.use_condition)
+app.add_url_rule("/",                           view_func=index.index)
+app.add_url_rule("/use_condition",              view_func=index.use_condition)
 
-app.add_url_rule("/route_<int:route_id>",   view_func=view.view_route,      methods=["GET", "POST"])
+app.add_url_rule("/route_<int:route_id>",       view_func=view.view_route,              methods=["GET", "POST"])
+app.add_url_rule("/edit_route_<int:route_id>",  view_func=edit.edit_name_description,   methods=["GET", "POST"])
 
-app.add_url_rule("/select_image",           view_func=create.select_image,  methods=["GET", "POST"])
-app.add_url_rule("/create_route",           view_func=create.create_route,  methods=["GET", "POST"])
-app.add_url_rule("/save_route",             view_func=create.save_route,    methods=["GET", "POST"])
+app.add_url_rule("/select_image",               view_func=create.select_image,          methods=["GET", "POST"])
+app.add_url_rule("/create_route",               view_func=create.create_route,          methods=["GET", "POST"])
+app.add_url_rule("/save_route",                 view_func=create.save_route,            methods=["GET", "POST"])
+
+
 
 if __name__ == "__main__":
     """ 

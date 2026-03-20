@@ -64,9 +64,7 @@
   <img id="routeImage" src="" alt="Foto via">
 </div>
 
-
-
 <script>
-  let uploadedImageURL = {{ data| tojson}}["image_url"];
+  let uploadedImageURL = {{data|tojson}}["image_url"];
   document.getElementById('routeImage').src = uploadedImageURL;
 </script>

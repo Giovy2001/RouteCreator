@@ -7,8 +7,7 @@ def view_route(route_id):
 
     if request.method == "POST":
         if 'authorName' in request.form:
-            ...
-            print("name")
+            return redirect(url_for(f"edit_name_description", route_id=route_object[0], route_object={"name":route_object[1], "description":route_object[4]}))
             
         elif 'authorHolds' in request.form:
             ...

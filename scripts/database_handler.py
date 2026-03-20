@@ -149,3 +149,26 @@ def add_route(name:str, author:str, image_url:str, description:str, holds:list) 
     
     # Commit the sql changes
     conn.commit()
+    
+def edit_name_description(id:int, name:str, description:str) -> None:
+    """
+    Update the name and description of a route in the database.
+    Args:
+        id (int): The unique identifier of the route to update.
+        name (str): The new name for the route.
+        description (str): The new description for the route.
+    Returns:
+        None
+    Raises:
+        sqlite3.Error: If the database operation fails.
+    """
+
+    cursor = conn.cursor()
+    
+    cursor.execute(
+        "UPDATE routes SET name = ?, description = ? WHERE id = ?",
+        (name, description, id)
+    )
+    
+    # Commit the sql changes
+    conn.commit()

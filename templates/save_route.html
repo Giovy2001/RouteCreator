@@ -37,4 +37,16 @@
         authorLabel.textContent = author;
         authorInput.value = author;
     }
+
+    // Importa nome e descrizione dal blocco esistente se richiamato dall'edit
+    let existing_route_object = {{ route_object|tojson if route_object else 'null' }};
+
+    if (existing_route_object["name"]) {
+        const routeName = document.getElementById('routeName');
+        routeName.value = existing_route_object["name"];
+    }
+    if (existing_route_object["description"]) {
+        const routeDescription = document.getElementById('routeDescription');
+        routeDescription.value = existing_route_object["description"];
+    }    
 </script>
