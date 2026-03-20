@@ -23,7 +23,6 @@
 
 
 <body>
-  <!-- TODO tre pallini 2/3 fasi -->
   <h3>Seleziona prese blocco</h3>
 
   <div class="tableSelector">
@@ -65,9 +64,7 @@
   <img id="routeImage" src="" alt="Foto via">
 </div>
 
-
-
 <script>
-  let uploadedImageURL = {{ data| tojson}}["image_url"];
-  document.getElementById('routeImage').src = uploadedImageURL;
+  let previous_data = {{data|tojson}};
+  document.getElementById('routeImage').src = previous_data["image_url"];
 </script>

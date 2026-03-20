@@ -149,3 +149,61 @@ def add_route(name:str, author:str, image_url:str, description:str, holds:list) 
     
     # Commit the sql changes
     conn.commit()
+    
+def edit_name_description(id:int, name:str, description:str) -> None:
+    """
+    Update the name and description of a route in the database.
+    Args:
+        id (int): The unique identifier of the route to update.
+        name (str): The new name for the route.
+        description (str): The new description for the route.
+    Returns:
+        None
+    Raises:
+        sqlite3.Error: If the database operation fails.
+    """
+
+    cursor = conn.cursor()
+    
+    cursor.execute(
+        "UPDATE routes SET name = ?, description = ? WHERE id = ?",
+        (name, description, id)
+    )
+    
+    # Commit the sql changes
+    conn.commit()
+    
+def edit_holds(id:int, holds:list) -> None:
+    """
+    Update the holds associated with a route in the database.
+    This function deletes all existing holds for a given route and inserts
+    new holds based on the provided list. Changes are committed to the database.
+    Args:
+        id (int): The unique identifier of the route whose holds will be updated.
+        holds (list): A list of dictionaries, each containing hold information with keys:
+            - "x" (float): The x-coordinate of the hold.
+            - "y" (float): The y-coordinate of the hold.
+            - "scale" (float): The scale/size of the hold.
+            - "type" (str): The type of hold (e.g., 'jug', 'crimp', 'sloper').
+            - "use" (str): The use type of the hold (e.g., 'start', 'intermediate', 'finish').
+    Returns:
+        None
+    Raises:
+        Database errors may be raised if the connection fails or the query is invalid.
+    """
+    
+    cursor = conn.cursor()
+    
+    cursor.execute(
+        "DELETE FROM holds WHERE route_id = ?",
+        (id,)
+    )
+    
+    for hold in holds:
+        cursor.execute(
+            "INSERT INTO holds (route_id, x, y, size, hold_type, use_type) VALUES (?, ?, ?, ?, ?, ?)", 
+            (id, hold["x"], hold["y"], hold["scale"], hold["type"], hold["use"])
+        )
+    
+    # Commit the sql changes
+    conn.commit()
