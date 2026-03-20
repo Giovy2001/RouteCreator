@@ -65,6 +65,6 @@
 </div>
 
 <script>
-  let uploadedImageURL = {{data|tojson}}["image_url"];
-  document.getElementById('routeImage').src = uploadedImageURL;
+  let previous_data = {{data|tojson}};
+  document.getElementById('routeImage').src = previous_data["image_url"];
 </script>

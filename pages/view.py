@@ -1,5 +1,6 @@
 from flask import redirect, render_template, request, url_for
 from scripts import database_handler, image_handler
+import json
 
 def view_route(route_id):
     route_object = database_handler.get_route(route_id)
@@ -7,11 +8,10 @@ def view_route(route_id):
 
     if request.method == "POST":
         if 'authorName' in request.form:
-            return redirect(url_for(f"edit_name_description", route_id=route_object[0], route_object={"name":route_object[1], "description":route_object[4]}))
+            return redirect(url_for(f"edit_name_description", route_id=route_object[0], route_object=json.dumps(route_object)))
             
         elif 'authorHolds' in request.form:
-            ...
-            print("Holds")
+            return redirect(url_for(f"edit_holds", route_id=route_object[0], holds_array=json.dumps(holds_array), image_url=route_object[3]))
             
         elif 'authorDelete' in request.form:
             image_url = route_object[3]

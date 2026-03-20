@@ -1,11 +1,4 @@
 """
-TODO: Update #2 - Route delete and edit
-    [ ] Funzionalità per
-        [ ] Eliminare il blocco
-        [ ] Modificare nome e descrizione del blocco
-        [ ] Modificare prese blocco
-
-
 TODO: Update #3 - Rework Route creation
 
     [ ] Sistema css delle tre fasi di route creation

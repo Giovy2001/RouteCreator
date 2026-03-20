@@ -150,3 +150,21 @@ holdContainer.addEventListener("click",(e)=>{
         deselectHold();
     }
 });
+
+// Carica le prese esistenti se il blocco esiste già
+if ("holds_array" in previous_data) {
+    previous_data["holds_array"].forEach(h => {
+        let data = {
+            id: h.id,
+            x: h.x,
+            y: h.y,
+            scale: h.r,
+            type: h.type,
+            use: h.use
+        };
+
+        let hold = createHold(data)
+        holds.push({element:hold,data:data});
+        addHoldEvents(hold);
+    })
+}
