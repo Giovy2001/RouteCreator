@@ -17,6 +17,7 @@
     <!-- Holds viewer -->
     <script src="/static/js/holds_handler.js" defer></script>
     <script src="/static/js/holds_viewer.js" defer></script>
+    <script src="/static/js/route_property_checker.js" defer></script>
 </head>
 
 <!-- Background grain -->
@@ -60,15 +61,24 @@
         </div>
         <div class="legend-column">
             <div class="legend-item">
-                <span class="label">M</span>
+                <span class="use_character">M</span>
                 <span class="label">Solo mani</span>
             </div>
 
             <div class="legend-item">
-                <span class="label">P</span>
+                <span class="use_character">P</span>
                 <span class="label">Solo piedi</span>
             </div>
         </div>
+    </div>
+
+    <div class="authorButtons" id="authorButtons">
+        <h2>Sei l'autore di questo blocco:</h2>
+        <p>&emsp;</p> 
+        <button type="button" id="editButton">Modifica Nome e Descrizione</button>
+        <button type="button" id="editButton">Modifica Prese</button>
+        <button type="button" id="deleteButton">Elimina Blocco</button>
+        <div class="spacer"></div>
     </div>
 
     <div class="back">
@@ -78,6 +88,5 @@
 
 <script>
     let holds = {{ holds | tojson }}
+    const routeAuthour = "{{ route[2] }}"
 </script>
-
-

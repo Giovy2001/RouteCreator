@@ -1,7 +1,13 @@
+/* Change color of the body for light mode */
 body {
     background-color: #DCD3C8;
     color: #161616;
     height: 120%;
+}
+button {
+    background-color: #161616;
+    border-color: #161616;
+    color: white;
 }
 .grain {
     mix-blend-mode: soft-light;
@@ -10,6 +16,9 @@ body {
 .background_color {
     background-color: #DCD3C8;
 }
+
+
+/* Header - Title, Author and Description */
 .title {
     display: flex;
     flex-direction: column;
@@ -31,12 +40,7 @@ h1, h2 {
     margin-top: 10px;
 }
 
-button {
-    background-color: #161616;
-    border-color: #161616;
-    color: white;
-}
-
+/* Image */
 img#routeImage {
     max-width: 100%;
     height: auto;
@@ -61,6 +65,35 @@ img#routeImage {
     height: 12px;
     border-radius: 50%;
 }
-.dot.start{ background-color:rgb(0, 255, 13); }
-.dot.middle{ background-color:rgb(0, 153, 255); }
-.dot.top{ background-color:rgb(255, 0, 0); }
+.use_character {
+    width: 12px;
+    text-align: center;
+}
+.dot.start{ background-color:rgba(0, 255, 13, 0.5); }
+.dot.middle{ background-color:rgba(0, 153, 255, 0.5); }
+.dot.top{ background-color:rgba(255, 0, 0, 0.5); }
+
+/* Pulsanti autore */
+.authorButtons {
+    margin-top: 30px;
+    display: none;
+}
+#deleteButton, #editButton {
+    position: relative;
+    margin-top: 5px;
+    bottom: 0;
+    width: 100%;
+}
+#deleteButton {
+    background-color: #CE2949;
+    border-color: #CE2949;
+    color: white;
+}
+#deleteButton:active {
+    background-color: #582841;
+    border-color: #582841;
+    box-shadow: 0 0 10px #ffffff88;
+}
+.spacer {
+    height: 80px;
+}
