@@ -4,7 +4,6 @@
 const holds_label = document.getElementById('jsonHoldsHidden');
 const saveButton = document.getElementById('save_route');
 saveButton.addEventListener('click', (e) => {
-    console.log(holds)
     holds_label.value = JSON.stringify(holds)
 });
 
