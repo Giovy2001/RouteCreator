@@ -7,6 +7,9 @@ body {
 
     /* Avoid hold click */
     -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* Internet Explorer */
+    user-select: none; /* Standard syntax */
 
     /* Backgound and margin */
     background-color: #1C2026;
