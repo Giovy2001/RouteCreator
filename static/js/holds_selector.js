@@ -36,11 +36,11 @@ holdContainer.addEventListener("pointerdown", (e)=>{
     const y = (e.clientY - rect.top) / rect.height;
 
     const data = {
-        id: holdId++,
+        hold_id: holdId++,
         x: x, y: y,
-        scale: parseFloat(holdSize.value),
-        type: holdTypeSelect.value,
-        use: holdUseSelect.value
+        size: parseFloat(holdSize.value),
+        progression_id: holdTypeSelect.value,
+        constraint_id: holdUseSelect.value
     };
 
     let hold = createHold(data)
@@ -66,9 +66,9 @@ function selectHold(hold){
 
     deleteBtn.style.display = "block";  
 
-    holdTypeSelect.value=obj.data.type;
-    holdUseSelect.value=obj.data.use;
-    holdSize.value=obj.data.scale;
+    holdTypeSelect.value=obj.data.progression_id;
+    holdUseSelect.value=obj.data.constraint_id;
+    holdSize.value=obj.data.size;
 }
 
 function deselectHold(){
@@ -110,7 +110,7 @@ holdTypeSelect.addEventListener("change",()=>{
     if(!selectedHold) return;
 
     const obj=holds.find(h=>h.element===selectedHold);
-    obj.data.type=holdTypeSelect.value;
+    obj.data.progression_id=holdTypeSelect.value;
     updateHoldStyle(selectedHold, obj.data);
 });
 
@@ -119,7 +119,7 @@ holdUseSelect.addEventListener("change",()=>{
     if(!selectedHold) return;
 
     const obj=holds.find(h=>h.element===selectedHold);
-    obj.data.use=holdUseSelect.value;
+    obj.data.constraint_id=holdUseSelect.value;
     updateUseStyle(selectedHold, obj.data)
 });
 
@@ -128,7 +128,7 @@ holdSize.addEventListener("input",()=>{
     if(!selectedHold) return;
 
     const obj=holds.find(h=>h.element===selectedHold);
-    obj.data.scale=holdSize.value;
+    obj.data.size=holdSize.value;
     updateHoldStyle(selectedHold,obj.data);
     updateUseStyle(selectedHold, obj.data)
 });
@@ -155,12 +155,12 @@ holdContainer.addEventListener("click",(e)=>{
 if ("holds_array" in previous_data) {
     previous_data["holds_array"].forEach(h => {
         let data = {
-            id: h.id,
+            hold_id: h.id,
             x: h.x,
             y: h.y,
-            scale: h.r,
-            type: h.type,
-            use: h.use
+            size: h.size,
+            progression_id: h.progression_id,
+            constraint_id: h.constraint_id
         };
 
         let hold = createHold(data)

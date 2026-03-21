@@ -1,4 +1,4 @@
-TODO UPDATE #2.5 - GitHub Restyling
+UPDATE #2.5 - GitHub Restyling
     this will be merged to main with update #3
 
     [x] Create readme
@@ -6,6 +6,10 @@ TODO UPDATE #2.5 - GitHub Restyling
 
 
 TODO UPDATE #3 - App sections rework
+
+
+    [ ] IMPORTANTE: Sono state fatte molte modifiche agli script del database, bisogna controllare tutte le volte che venivano chiamate le funzioni
+    
 
     [ ] Creare palette comune
         [ ] :root{} dovrebbe funzionare (cerca su internet)
@@ -18,7 +22,7 @@ TODO UPDATE #3 - App sections rework
             [ ] creare una nuova table betas
             [ ] id, name, description, route
         [ ] routes
-            [ ] aggiungere difficoltà (opzionale)
+            [x] aggiungere difficoltà (opzionale)
         [ ] holds
             [ ] rinominare use e type per essere più comprensibili
             [ ] valutare di aggiungere altre informazioni
@@ -35,6 +39,8 @@ TODO UPDATE #3 - App sections rework
             [ ] Icona del profilo
             [ ] Colore del profilo
                 
+    [ ] Manca l'icona del sito (favicon)
+    [ ] Cambiare nome a salvataggio nel local storage "chalk_and_track_username" 
 
 
 TODO UPDATE #4 - Rework Route creation
@@ -56,15 +62,23 @@ TODO UPDATE #4 - Rework Route creation
         [ ] Valutare differenza tra de-selezione e hold-drag
 
 
-
 TODO UPDATE #5 - Archivio
     
     [ ] Possibilità di filtrare nell'index, per autore / nome / difficoltà
         [ ] Controlla come si fa la ricerca intelligente (lettera sbagliata ma comunque simile)
-    [ ] Manca l'icona del sito (favicon)
         
 
-TODO: Update #5 - pulizia del codice
+TODO UPDATE #6 - Esplora
+
+    [ ] Pagina per trovare blocchi in evidenza
+    [ ] Filtra solo i blocchi che non hai completato
+    [ ] In base alla data, quelli più recenti prima
+    [ ] Con un po' di randomicità
+    [ ] Fullscreen tiktok feed
+    [ ] Se non ci sono blocchi in evidenza cosa succede?
+
+
+TODO UPDATE #7 - pulizia del codice
 
     [ ] Controllare durante l'esecuzione se ci sono errori nella console 
     [ ] Mettere ordine nel codice
@@ -73,4 +87,3 @@ TODO: Update #5 - pulizia del codice
     [ ] Rimuovere commenti relativi al precedente modo di passare le variabili con i cookies in create.py
     [ ] Valutare di rinominare i file per seguire una convenzione migliore
     [ ] Rimuovere da git i file di cache di python
-    [ ] Cambiare nome a salvataggio nel local storage "boulderUsername" 

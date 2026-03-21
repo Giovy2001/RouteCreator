@@ -1,5 +1,7 @@
 from flask import redirect, render_template, request, url_for
-from scripts import database_handler, image_handler
+from scripts import image_handler
+from scripts.database_sql import sql_holds, sql_routes
+import global_values
 import json
 
 def edit_holds(route_id):
@@ -13,7 +15,7 @@ def edit_holds(route_id):
         for hold_helement in json.loads(holds):
             holds_array.append(hold_helement["data"])
         
-        database_handler.edit_holds(route_id, holds_array)
+        sql_holds.edit_holds(global_values.conn, route_id, holds_array)
         
         return redirect(url_for("view_route", route_id=route_id))
 
@@ -30,7 +32,7 @@ def edit_name_description(route_id):
         if not name:
             return render_template("save_route.html")
         
-        database_handler.edit_name_description(route_id, name, description)
+        sql_routes.edit_route(global_values.conn, route_id, {"route_name":name, "route_description":description})
         
         return redirect(url_for("view_route", route_id=route_id))
     

@@ -1,8 +1,9 @@
 from flask import render_template
-from scripts import database_handler
+from scripts.database_sql import sql_routes
+import global_values
 
 def index():
-    routes = database_handler.get_all_routes()    
+    routes = sql_routes.get_all_routes(global_values.conn)    
     return render_template("index.html", routes=routes)
 
 def use_condition():

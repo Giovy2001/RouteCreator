@@ -1,21 +1,12 @@
 from flask import Flask
 
-if __name__ == "__main__":
-    from settings import DEBUG, RUN_LOCALLY, INIT_DATABASE
-else:
-    DEBUG = RUN_LOCALLY = False
-
 app = Flask(__name__)
 
-from scripts import database_handler
-from scripts import image_handler
+import global_values
+global_values.load_database()
 
-if RUN_LOCALLY:
-    database_handler.init_local_database()
-    image_handler.init_local_database()
-else:
-    database_handler.init_sql_database()
-    image_handler.init_glob_database()
+if __name__ != "__main__":
+    global_values.DEBUG = global_values.RUN_LOCALLY, global_values.RUN_LOCALLY = False
 
 from pages import create, index, view, edit
 
@@ -31,19 +22,17 @@ app.add_url_rule("/create_route",               view_func=create.create_route,  
 app.add_url_rule("/save_route",                 view_func=create.save_route,            methods=["GET", "POST"])
 
 
-
 if __name__ == "__main__":
     """ 
     This runs only if the program is started from the main.py files
     The result is that it's used only when I test/debug the web page in a local network 
     """
     
-    if INIT_DATABASE:
-        from scripts import database_initiator
-        database_initiator.init_database("local" if RUN_LOCALLY else "turso")
-        raise Exception("INFO Database initiated correctly.")
+    if global_values.INIT_DATABASE:
+        from scripts.database_sql import database_initiator
+        database_initiator.init_database("local" if global_values.RUN_LOCALLY else "turso")
     
-    if DEBUG:
+    if global_values.DEBUG:
         app.run(debug=True)
     else:
         from waitress import serve
