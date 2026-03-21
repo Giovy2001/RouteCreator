@@ -8,8 +8,8 @@ UPDATE #2.5 - GitHub Restyling
 TODO UPDATE #3 - App sections rework
 
 
-    [ ] IMPORTANTE: Sono state fatte molte modifiche agli script del database, bisogna controllare tutte le volte che venivano chiamate le funzioni
-    
+    [x] IMPORTANTE: Sono state fatte molte modifiche agli script del database, bisogna controllare tutte le volte che venivano chiamate le funzioni
+    [ ] Aggiungere abilità di usare progression_id "zone" e constraint_id "only_hand","only_foot","foot","only_volume","no_volume","normal"
 
     [ ] Creare palette comune
         [ ] :root{} dovrebbe funzionare (cerca su internet)
@@ -17,15 +17,17 @@ TODO UPDATE #3 - App sections rework
     [ ] Inserire nel databse tutte le cose necessarie per la nuova app
         [ ] users
             [ ] creare una nuova table users
-            [ ] id, name, icon, color, creation_date, last_seen_date, points, serialized_completed_routes
+            [ ] user_id, user_name, user_icon, user_color, creation_date, last_seen_date, points, serialized_completed_routes
         [ ] betas
             [ ] creare una nuova table betas
-            [ ] id, name, description, route
+            [ ] beta_id, route_id, title, body
+            [ ] Foreign reference alla route (come holds)
         [ ] routes
             [x] aggiungere difficoltà (opzionale)
-        [ ] holds
-            [ ] rinominare use e type per essere più comprensibili
-            [ ] valutare di aggiungere altre informazioni
+            [ ] Foreign reference a user_id
+        [x] holds
+            [x] rinominare use e type per essere più comprensibili
+            [x] valutare di aggiungere altre informazioni
 
     [ ] Implementare le quattro diverse sezioni
         [ ] Esplora
@@ -40,7 +42,7 @@ TODO UPDATE #3 - App sections rework
             [ ] Colore del profilo
                 
     [ ] Manca l'icona del sito (favicon)
-    [ ] Cambiare nome a salvataggio nel local storage "chalk_and_track_username" 
+    [x] Cambiare nome a salvataggio nel local storage "chalk_and_track_username" 
 
 
 TODO UPDATE #4 - Rework Route creation

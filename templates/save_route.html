@@ -32,7 +32,7 @@
     const authorLabel = document.getElementById('routeAuthor');
     const authorInput = document.getElementById('routeAuthorHidden');
 
-    let author = localStorage.getItem('boulderUsername');
+    let author = localStorage.getItem('chalk_and_track_username');
     if (author != null) {
         authorLabel.textContent = author;
         authorInput.value = author;
@@ -41,12 +41,12 @@
     // Importa nome e descrizione dal blocco esistente se richiamato dall'edit
     let existing_route_object = {{ route_object|tojson if route_object else 'null' }};
 
-    if (existing_route_object[1]) {
+    if (existing_route_object["route_name"]) {
         const routeName = document.getElementById('routeName');
-        routeName.value = existing_route_object[1];
+        routeName.value = existing_route_object["route_name"];
     }
-    if (existing_route_object[4]) {
+    if (existing_route_object["route_description"]) {
         const routeDescription = document.getElementById('routeDescription');
-        routeDescription.value = existing_route_object[4];
+        routeDescription.value = existing_route_object["route_description"];
     }    
 </script>

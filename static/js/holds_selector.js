@@ -129,7 +129,7 @@ holdSize.addEventListener("input",()=>{
 
     const obj=holds.find(h=>h.element===selectedHold);
     obj.data.size=holdSize.value;
-    updateHoldStyle(selectedHold,obj.data);
+    updateHoldStyle(selectedHold, obj.data);
     updateUseStyle(selectedHold, obj.data)
 });
 

@@ -1,4 +1,4 @@
-const currentUser = localStorage.getItem('boulderUsername');
+const currentUser = localStorage.getItem('chalk_and_track_username');
 const authorButtons = document.getElementById("authorButtons");
 
 if (currentUser == routeAuthour) {

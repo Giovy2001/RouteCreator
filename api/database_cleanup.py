@@ -1,7 +1,7 @@
 from flask import Flask
 import logging
-from scripts import image_handler, database_handler
-
+from scripts import image_handler
+from scripts.database_sql import sql_routes, sql_init
 
 def database_cleanup() -> int:
     """
@@ -14,13 +14,14 @@ def database_cleanup() -> int:
     """
     
     images_urls: list = [entry for entry in image_handler.list()]
-    database_urls: list = [entry[3] for entry in database_handler.get_all_routes()]
+    database_entries: list = sql_routes.get_all_routes(global_values.conn)
+    database_urls: list = [entry["image_url"] for entry in database_entries]
     
     cleanup_actions: int = 0
     
-    for url in database_urls:
-        if not url.lower() in [i.lower() for i in images_urls]:
-            database_handler.del_route(url)
+    for entry_dict in database_entries:
+        if not entry_dict["image_url"].lower() in [i.lower() for i in images_urls]:
+            sql_routes.del_route(global_values.conn, entry_dict["route_id"])
             cleanup_actions+=1
     
     for url in images_urls:
@@ -34,8 +35,8 @@ def database_cleanup() -> int:
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
-database_handler.init_sql_database()
-image_handler.init_glob_database()
+import global_values
+global_values.load_database()
 
 @app.route('/api/database_cleanup', methods=['GET'])
 def init_cron():

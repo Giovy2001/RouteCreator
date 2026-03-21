@@ -28,7 +28,6 @@ def format_table(route_object: tuple) -> dict:
     table_structure: tuple = ("route_id","route_name","author","creation_date","route_grade","route_description","image_url")
     return {table_structure[index]:route_object[index] for index in range(len(table_structure))}
 
-
 ### GETS
 
 def get_all_routes(conn: libsql.Connection) -> list:
@@ -43,7 +42,8 @@ def get_all_routes(conn: libsql.Connection) -> list:
     """
     
     cursor: libsql.Cursor = conn.cursor()
-    return cursor.execute("SELECT * FROM routes").fetchall()
+    routes: list = cursor.execute("SELECT * FROM routes").fetchall()
+    return [format_table(route) for route in routes]
 
 
 def get_route(conn: libsql.Connection, route_id: int) -> dict:
@@ -74,7 +74,8 @@ def edit_route(conn: libsql.Connection, route_id: int, data_to_override: dict) -
     """
     
     instruction: str = ", ".join([f'{key} = ?' for key in data_to_override])
-    values: tuple = (data_to_override[key] for key in data_to_override)
+    values: list = [data_to_override[key] for key in data_to_override]
+    values.append(route_id)
 
     cursor: libsql.Cursor = conn.cursor()
     cursor.execute(

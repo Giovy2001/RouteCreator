@@ -27,17 +27,17 @@
 <body>
     <div class="container">
         <div class="title">
-            <h1>{{route[1]}}</h1>
-            <h2 class="author">Tracciatore: {{route[2]}}</h2>
-            <a>{{route[5]}}</a>
+            <h1>{{route["route_name"]}}</h1>
+            <h2 class="author">Tracciatore: {{route["author"]}}</h2>
+            <a>{{route["creation_date"]}}</a>
         </div>
         <p>&emsp;</p>        
         <div class="description">
-            <a>{{route[4]}}</a>
+            <a>{{route["route_description"]}}</a>
         </div>
     </div>
     <div id="holdContainer" style="position:relative;">
-      <img id="routeImage" src={{route[3]}} alt="Foto via">
+      <img id="routeImage" src={{route["image_url"]}} alt="Foto via">
     </div>
 
     <h2>Legenda:</h2>
@@ -90,5 +90,5 @@
 
 <script>
     let holds = {{ holds | tojson }}
-    const routeAuthour = "{{ route[2] }}"
+    const routeAuthour = "{{ route['author'] }}"
 </script>
