@@ -10,7 +10,7 @@
     border: 1px solid rgb(255, 255, 255);
     transform:translate(-50%,-50%);
 }
-.use{
+.constraint{
     position: absolute;
 
     font-family: "Fredoka", sans-serif;
@@ -21,4 +21,5 @@
 
 .start{ background:rgba(0, 255, 13, 0.3); }
 .middle{ background:rgba(0, 153, 255, 0.3); }
+.zone{ background:rgba(255, 153, 0, 0.3); }
 .top{ background:rgba(255, 0, 0, 0.3); }

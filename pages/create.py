@@ -1,15 +1,13 @@
 from flask import render_template, request, redirect, url_for, session, jsonify
-from scripts import image_handler, database_handler
+from scripts import image_handler
+from scripts.database_sql import sql_routes
+import global_values
 import json
 
 def select_image():
     if request.method == "POST":
-
         image = request.files["image"]
-
-        image_url = image_handler.put(image.filename, image.read())
-
-        #session['last_uploaded_image_url'] = image_url
+        image_url: str = image_handler.put(image.filename, image.read())
 
         return redirect(url_for("create_route", image_url=image_url))
 
@@ -17,14 +15,9 @@ def select_image():
 
 
 def create_route():
-    #image_url = session.get('last_uploaded_image_url', None)
-    image_url = request.args.get("image_url")
-    #if not image_url:
-    #    return redirect(url_for("index"))
+    image_url: str = request.args.get("image_url")
     
     if request.method == "POST":
-        #session['holds'] = request.form.get("jsonHolds")
-        #session['last_uploaded_image_url'] = image_url
         holds = request.form.get("jsonHolds")
         
         return redirect(url_for("save_route", image_url=image_url, holds=holds)) 
@@ -34,23 +27,20 @@ def create_route():
 
 def save_route():    
     if request.method == "POST":
-        #image_url = session.get('last_uploaded_image_url', None)
-        #holds = session.get('holds', None)
-        image_url = request.args.get("image_url")
-        holds = request.args.get("holds")
+        route_data: dict = {}
+        route_data["route_name"] = request.form.get("routeName")
+        route_data["author"] = request.form.get("routeAuthor")
+        route_data["route_grade"] = request.form.get("routeGrade")
+        route_data["route_description"] = request.form.get("routeDescription")
+        route_data["image_url"] = request.args.get("image_url")
         
-        author = request.form.get("routeAuthor")
-        name = request.form.get("routeName")
-        description = request.form.get("routeDescription")
-    
-        holds_array = []
-        for hold_helement in json.loads(holds):
-            holds_array.append(hold_helement["data"])
-            
-        if not name:
+        if not route_data["route_name"]:
             return render_template("save_route.html")
         
-        database_handler.add_route(name, author if author else "Anonimo", image_url, description if description else "", holds_array)
+        holds = request.args.get("holds")
+        holds_array = [hold["data"] for hold in json.loads(holds)]
+        
+        sql_routes.add_route(global_values.conn, route_data, holds_array)
         
         return redirect(url_for("index"))
 

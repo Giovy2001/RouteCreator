@@ -52,13 +52,13 @@
         {% for route in routes %}
     
         <!-- Card spawner -->
-        <a href="/route_{{route[0]}}" class="card">
-            <img src="{{route[3]}}">
+        <a href="/route_{{route['route_id']}}" class="card">
+            <img src="{{route['image_url']}}">
             <div class="card-title">
-                {{route[1]}}
+                {{route['route_name']}}
             </div>
             <div class="card-author">
-                {{route[2]}}
+                {{route['author']}}
             </div>
         </a>
     

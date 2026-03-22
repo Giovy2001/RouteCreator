@@ -27,17 +27,17 @@
 <body>
     <div class="container">
         <div class="title">
-            <h1>{{route[1]}}</h1>
-            <h2 class="author">Tracciatore: {{route[2]}}</h2>
-            <a>{{route[5]}}</a>
+            <h1>{{route["route_name"]}}</h1>
+            <h2 class="author">Tracciatore: {{route["author"]}}</h2>
+            <a>{{route["creation_date"]}}</a>
         </div>
         <p>&emsp;</p>        
         <div class="description">
-            <a>{{route[4]}}</a>
+            <a>{{route["route_description"]}}</a>
         </div>
     </div>
     <div id="holdContainer" style="position:relative;">
-      <img id="routeImage" src={{route[3]}} alt="Foto via">
+      <img id="routeImage" src={{route["image_url"]}} alt="Foto via">
     </div>
 
     <h2>Legenda:</h2>
@@ -55,18 +55,38 @@
             </div>
 
             <div class="legend-item">
+                <span class="dot zone"></span>
+                <span class="label">Zona</span>
+            </div>
+
+            <div class="legend-item">
                 <span class="dot top"></span>
                 <span class="label">Top</span>
             </div>
         </div>
         <div class="legend-column">
             <div class="legend-item">
-                <span class="use_character">M</span>
+                <span class="use_character">P</span>
+                <span class="label">Piede</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="use_character">NV</span>
+                <span class="label">No volume</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="use_character">SV</span>
+                <span class="label">Solo volume</span>
+            </div>
+
+            <div class="legend-item">
+                <span class="use_character">SM</span>
                 <span class="label">Solo mani</span>
             </div>
 
             <div class="legend-item">
-                <span class="use_character">P</span>
+                <span class="use_character">SP</span>
                 <span class="label">Solo piedi</span>
             </div>
         </div>
@@ -90,5 +110,5 @@
 
 <script>
     let holds = {{ holds | tojson }}
-    const routeAuthour = "{{ route[2] }}"
+    const routeAuthour = "{{ route['author'] }}"
 </script>
