@@ -7,27 +7,30 @@ UPDATE #2.5 - GitHub Restyling
 
 TODO UPDATE #3 - App sections rework
 
-
     [x] IMPORTANTE: Sono state fatte molte modifiche agli script del database, bisogna controllare tutte le volte che venivano chiamate le funzioni
-    [ ] Aggiungere abilità di usare progression_id "zone" e constraint_id "only_hand","only_foot","foot","only_volume","no_volume","normal"
+    [x] Aggiungere abilità di usare progression_id "zone" e constraint_id "only_hand","only_foot","foot","only_volume","no_volume","normal"
 
-    [ ] Creare palette comune
-        [ ] :root{} dovrebbe funzionare (cerca su internet)
 
-    [ ] Inserire nel databse tutte le cose necessarie per la nuova app
-        [ ] users
-            [ ] creare una nuova table users
-            [ ] user_id, user_name, user_icon, user_color, creation_date, last_seen_date, points, serialized_completed_routes
-        [ ] betas
-            [ ] creare una nuova table betas
-            [ ] beta_id, route_id, title, body
-            [ ] Foreign reference alla route (come holds)
-        [ ] routes
+    [x] Inserire nel databse tutte le cose necessarie per la nuova app
+        [x] users
+            [x] creare una nuova table users
+            [x] user_id, user_name, user_icon, user_color, creation_date, last_seen_date, points, serialized_completed_routes
+            [x] Test delle funzionalità
+        [x] betas
+            [x] creare una nuova table betas
+            [x] beta_id, route_id, title, body
+            [x] Foreign reference alla route (come holds)
+        [x] routes
             [x] aggiungere difficoltà (opzionale)
-            [ ] Foreign reference a user_id
+            [x] Foreign reference a user_id
         [x] holds
             [x] rinominare use e type per essere più comprensibili
             [x] valutare di aggiungere altre informazioni
+
+    # OUT of branch unstable
+
+    [ ] Creare palette comune
+        [ ] :root{} dovrebbe funzionare (cerca su internet)
 
     [ ] Implementare le quattro diverse sezioni
         [ ] Esplora
@@ -59,6 +62,7 @@ TODO UPDATE #4 - Rework Route creation
     [ ] Copri l'immagine con un qualcosa di semitrasparente che la renda più scura/desaturata
         [ ] le prese al posto di colorare l'interno dei tre colori, all'interno hanno i colori originale della foto
         [ ] colora dei tre colori le outline dei cerchi
+        [ ] le label dei constraint dovrebbero avere una targhetta in modo che siano visibili sempre
         
     [ ] Far si che una volta selezionata una presa tu possa scrollare in qualsiasi punto dello schermo per spostarla
         [ ] Valutare differenza tra de-selezione e hold-drag

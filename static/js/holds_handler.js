@@ -6,12 +6,12 @@ function createHold(data) {
     hold.dataset.id = data.id;
     holdContainer.appendChild(hold);
 
-    let use = document.createElement("label");
-    use.classList.add("use");
-    hold.appendChild(use);
+    let constraint = document.createElement("label");
+    constraint.classList.add("constraint");
+    hold.appendChild(constraint);
     
     updateHoldStyle(hold, data);
-    updateUseStyle(hold, data);
+    updateConstraintStyle(hold, data);
 
     return hold
 }
@@ -28,10 +28,11 @@ function updateHoldStyle(hold, data) {
     hold.classList.add(data.progression_id);
 }
 
-function updateUseStyle(hold, data) {
-    let use = hold.querySelector(".use");
-    let use_text = (data.constraint_id === "hand") ? "M" : (data.constraint_id === "foot") ? "P" : "";
-    use.textContent = use_text;
-    use.style.left = `${24 * data.size + 2}px`;
-    use.style.top = `${12 * data.size}px`;
+function updateConstraintStyle(hold, data) {
+    const constraint_mapping = {"foot":"P","only_foot":"SP","only_hand":"SM","only_volume":"SV","no_volume":"NV","normal":""}
+    let constraint = hold.querySelector(".constraint");
+    let constraint_text = constraint_mapping[data.constraint_id];
+    constraint.textContent = constraint_text;
+    constraint.style.left = `${24 * data.size + 2}px`;
+    constraint.style.top = `${12 * data.size}px`;
 }

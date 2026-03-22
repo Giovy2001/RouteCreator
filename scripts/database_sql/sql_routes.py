@@ -122,7 +122,7 @@ def del_route(conn: libsql.Connection, route_id: int) -> None:
     
     cursor: libsql.Cursor = conn.cursor()
     cursor.execute(
-        "DELETE FROM routes WHERE id = ?",
+        "DELETE FROM routes WHERE route_id = ?",
         (route_id,)
     )
     
@@ -151,7 +151,8 @@ def init_routes_table(conn: libsql.Connection) -> None:
         creation_date TEXT,
         route_grade TEXT,
         route_description TEXT,
-        image_url TEXT
+        image_url TEXT,
+        FOREIGN KEY (author) REFERENCES users(user_name)
     )""")
     
     conn.commit()

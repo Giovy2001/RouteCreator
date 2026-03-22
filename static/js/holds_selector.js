@@ -120,7 +120,7 @@ holdUseSelect.addEventListener("change",()=>{
 
     const obj=holds.find(h=>h.element===selectedHold);
     obj.data.constraint_id=holdUseSelect.value;
-    updateUseStyle(selectedHold, obj.data)
+    updateConstraintStyle(selectedHold, obj.data)
 });
 
 // RIDIMENSIONA
@@ -130,7 +130,7 @@ holdSize.addEventListener("input",()=>{
     const obj=holds.find(h=>h.element===selectedHold);
     obj.data.size=holdSize.value;
     updateHoldStyle(selectedHold, obj.data);
-    updateUseStyle(selectedHold, obj.data)
+    updateConstraintStyle(selectedHold, obj.data)
 });
 
 // ELIMINA

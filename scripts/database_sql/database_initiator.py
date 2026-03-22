@@ -1,4 +1,4 @@
-from scripts.database_sql import sql_init, sql_holds, sql_routes
+from scripts.database_sql import sql_init, sql_holds, sql_routes, sql_users, sql_betas
 
 def init_database(mode: str) -> None:
     """
@@ -25,5 +25,7 @@ def init_database(mode: str) -> None:
         
     sql_routes.init_routes_table(conn)
     sql_holds.init_holds_table(conn)
+    sql_users.init_users_table(conn)
+    sql_betas.init_betas_table(conn)
     
     raise Exception("INFO Database initiated correctly.")
