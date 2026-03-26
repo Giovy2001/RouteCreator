@@ -1,7 +1,9 @@
 function saveUsername() {
-  localStorage.removeItem("boulderUsername")
   const username = document.getElementById("usernameInput").value;
   localStorage.setItem("chalk_and_track_username", username);
+
+  /* remove old local storage entry */
+  localStorage.removeItem("boulderUsername")
 }
 
 function loadUsername() {

@@ -22,6 +22,10 @@ app.add_url_rule("/create_route",               view_func=create.create_route,  
 app.add_url_rule("/save_route",                 view_func=create.save_route,            methods=["GET", "POST"])
 
 
+from pages.home import home_profile
+app.add_url_rule("/profile", view_func=home_profile.render_page)
+
+
 if __name__ == "__main__":
     """ 
     This runs only if the program is started from the main.py files

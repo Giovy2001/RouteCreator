@@ -9,17 +9,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400&display=swap" rel="stylesheet">
-    <!-- Title -->
-    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>PalaEnrosadira - Chalk & Track</title>
+    <title>Chalk&Track - Profile</title>
 
     <link rel="stylesheet" href="/static/css/palette.css" type="text/css">
 
     <link rel="stylesheet" href="/static/css/body.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/input.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
 
     <!-- Save username in the local browser data -->
     <script src="/static/js/profile/username.js" defer></script>
@@ -30,13 +26,6 @@
 <div class="grain"></div>
 
 <body>
-    <!-- Title -->
-    <p>&emsp;</p>
-    <div class="title">
-        <h1>PalaEnrosadira</h1>
-        <h3>Chalk & Track</h3>
-    </div>
-
     <!-- User selector -->
     <p>&emsp;</p>
     <div class="userBar">
@@ -45,39 +34,7 @@
         </div>
         <div class="usernameWrapper">
             <input type="text" id="usernameInput" class="flex-input" placeholder="Scrivi il tuo nome" onchange="saveUsername()">
-            <button type="button" onclick="saveUsername()">Salva</button>
         </div>
-    </div>
-
-    <!-- New route button -->
-    <div class="new-route">
-        <button onclick="window.location.href='/select_image';" style="width: 100%;">Aggiungi un nuovo blocco</button>
-    </div>
-    <p>&emsp;</p>
-
-    <!-- Grid -->
-    <div class="grid">
-        {% for route in routes %}
-    
-        <!-- Card spawner -->
-        <a href="/route_{{route['route_id']}}" class="card">
-            <img src="{{route['image_url']}}">
-            <div class="card-title">
-                {{route['route_name']}}
-            </div>
-            <div class="card-author">
-                {{route['author']}}
-            </div>
-        </a>
-    
-        {% endfor %}
-    </div>
-
-    <div class="use-condition">
-        <a href="/use_condition", class="use-condition">
-            <span class="icon">i</span>
-            Condizioni di utilizzo
-        </a>
     </div>
 </body>
 
