@@ -3,13 +3,13 @@ body {
     font-family: "Fredoka", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-    color: white;
+    color: var(--very-light);
 
     /* Avoid hold click */
     -webkit-touch-callout: none;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* Internet Explorer */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
     /* Backgound and margin */
     background-color: #1C2026;
@@ -34,9 +34,9 @@ body {
     height: 100%;
     width: 100%;
     z-index: -1;
-   
+
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
-    background-size: 300px 530px; 
+    background-size: 300px 530px;
     mix-blend-mode: multiply;
     opacity: 0.8;
 }

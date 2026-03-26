@@ -1,15 +1,14 @@
-UPDATE #2.5 - GitHub Restyling
+# UPDATE #2.5 - GitHub Restyling
     this will be merged to main with update #3
 
     [x] Create readme
     [x] Rename to PalaEnrosadira - Chalk & Track
 
 
-TODO UPDATE #3 - App sections rework
+# TODO UPDATE #3 - Unstable branch
 
     [x] IMPORTANTE: Sono state fatte molte modifiche agli script del database, bisogna controllare tutte le volte che venivano chiamate le funzioni
     [x] Aggiungere abilità di usare progression_id "zone" e constraint_id "only_hand","only_foot","foot","only_volume","no_volume","normal"
-
 
     [x] Inserire nel databse tutte le cose necessarie per la nuova app
         [x] users
@@ -27,13 +26,14 @@ TODO UPDATE #3 - App sections rework
             [x] rinominare use e type per essere più comprensibili
             [x] valutare di aggiungere altre informazioni
 
-    # OUT of branch unstable
+# TODO UPDATE #3.1 - App sections rework
 
     [ ] Creare palette comune
-        [ ] :root{} dovrebbe funzionare (cerca su internet)
+        [x] :root{} dovrebbe funzionare (cerca su internet)
+        [ ] sostituire tutti i colori nel css con il riferimento alla variabile
 
     [ ] Implementare le quattro diverse sezioni
-        [ ] Esplora
+        [ ] Esplora 
             [ ] Per ora non porta a nulla
             [ ] Magari under construction page
         [ ] Crea
@@ -44,11 +44,17 @@ TODO UPDATE #3 - App sections rework
             [ ] Icona del profilo
             [ ] Colore del profilo
                 
-    [ ] Manca l'icona del sito (favicon)
-    [x] Cambiare nome a salvataggio nel local storage "chalk_and_track_username" 
+    [ ] Icona sito
+        [ ] L'icona piccola dovrebbe essere solo logo (senza scritta e con bordi arrotondati)
+        [ ] Inserire su ogni head le informazioni dell'icona
+        [ ] Magari potrei avere diverse icone (quelle che vengono esportate sulla home iphone) una per colore del profilo così da poter customizzare l'icona
+    [x] Cambiare nome a salvataggio nel local storage "chalk_and_track_username"
+
+    [ ] Re inizializzare databases, sia local che turso (applicare le modifiche alle tables)
+        [ ] Droppare le tabelle su turso prima per far si che vengano ricreate in modo corretto.
 
 
-TODO UPDATE #4 - Rework Route creation
+# TODO UPDATE #4 - Rework Route creation
 
     [ ] Provare a vedere se è possibile processare l'immagine lato client in modo da rendere più leggero il caricamento
     
@@ -68,13 +74,13 @@ TODO UPDATE #4 - Rework Route creation
         [ ] Valutare differenza tra de-selezione e hold-drag
 
 
-TODO UPDATE #5 - Archivio
+# TODO UPDATE #5 - Archivio
     
     [ ] Possibilità di filtrare nell'index, per autore / nome / difficoltà
         [ ] Controlla come si fa la ricerca intelligente (lettera sbagliata ma comunque simile)
         
 
-TODO UPDATE #6 - Esplora
+# TODO UPDATE #6 - Esplora
 
     [ ] Pagina per trovare blocchi in evidenza
     [ ] Filtra solo i blocchi che non hai completato
@@ -84,7 +90,7 @@ TODO UPDATE #6 - Esplora
     [ ] Se non ci sono blocchi in evidenza cosa succede?
 
 
-TODO UPDATE #7 - pulizia del codice
+# TODO UPDATE #7 - pulizia del codice
 
     [ ] Controllare durante l'esecuzione se ci sono errori nella console 
     [ ] Mettere ordine nel codice

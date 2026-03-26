@@ -6,7 +6,7 @@ import global_values
 global_values.load_database()
 
 if __name__ != "__main__":
-    global_values.DEBUG = global_values.RUN_LOCALLY, global_values.RUN_LOCALLY = False
+    global_values.RUN_LOCALLY, global_values.RUN_LOCALLY = False
 
 from pages import create, index, view, edit
 
@@ -32,10 +32,6 @@ if __name__ == "__main__":
         from scripts.database_sql import database_initiator
         database_initiator.init_database("local" if global_values.RUN_LOCALLY else "turso")
     
-    if global_values.DEBUG:
-        app.run(debug=True)
-    else:
-        from waitress import serve
-        serve(app, host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=8080, debug=True)
         
     

@@ -1,7 +1,6 @@
 from scripts.database_sql import sql_init
 from scripts import image_handler
 
-DEBUG: bool = True
 RUN_LOCALLY: bool = True
 INIT_DATABASE: bool = False
 
