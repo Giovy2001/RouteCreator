@@ -1,0 +1,36 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--dark);
+  padding: 6px 0;
+  z-index: 1000;
+}
+
+.nav-item {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 15px;
+  color: var(--very-light); 
+}
+
+.nav-item.active {
+  font-weight: bold;
+  color: var(--primary-light);
+}
+
+.label {
+    position: fixed;
+    margin: 0;
+    margin-top: 15px;
+    font-size: smaller;
+}

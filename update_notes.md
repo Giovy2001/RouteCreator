@@ -32,6 +32,11 @@
         [x] :root{} dovrebbe funzionare (cerca su internet)
         [ ] sostituire tutti i colori nel css con il riferimento alla variabile
 
+    [ ] rimuovere tutti i css a button object (perché sfanculano tutto)
+        [ ] vanno sostituiti con le modifiche al class name specifico
+
+    [ ] l'elemento selezionato della bar deve avere un riguardo di selezione (come stitch)
+
     [ ] Implementare le quattro diverse sezioni
         [ ] Esplora 
             [ ] Per ora non porta a nulla
@@ -45,9 +50,10 @@
             [ ] Colore del profilo
                 
     [ ] Icona sito
-        [ ] L'icona piccola dovrebbe essere solo logo (senza scritta e con bordi arrotondati)
+        [x] L'icona piccola dovrebbe essere solo logo (senza scritta e con bordi arrotondati)
         [ ] Inserire su ogni head le informazioni dell'icona
         [ ] Magari potrei avere diverse icone (quelle che vengono esportate sulla home iphone) una per colore del profilo così da poter customizzare l'icona
+            [ ] Non così facile, magari bisogna riavviare la pagina ma dovrebbe essere possibile
     [x] Cambiare nome a salvataggio nel local storage "chalk_and_track_username"
 
     [ ] Re inizializzare databases, sia local che turso (applicare le modifiche alle tables)
