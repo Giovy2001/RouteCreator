@@ -19,8 +19,9 @@
 
     <link rel="stylesheet" href="/static/css/body.css" type="text/css">
 
-    <!-- Save username in the local browser data -->
+    <!-- Local storage related scripts -->
     <script src="/static/js/profile/username.js" defer></script>
+    <script src="/static/js/profile/bottom-nav-update.js" defer></script>
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/4f9d6b6c17.js" crossorigin="anonymous"></script>
@@ -51,7 +52,7 @@
             <i class="fa-solid fa-fire fa-xl"></i>
             <span class="label">Esplora</span>
         </button>
-        <button class="nav-item">
+        <button class="nav-item" id="create-button-hidden">
             <i class="fa-solid fa-circle-plus fa-xl"></i>
             <span class="label">Crea</span>
         </button>

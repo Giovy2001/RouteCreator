@@ -20,7 +20,7 @@ input[type="text"]:focus {
     box-shadow: 0 0 10px #ffffff88;
 }
 
-button {
+.default-button {
     border: 2px solid;
     border-radius: 0;
     height: 40px;
@@ -36,9 +36,8 @@ button {
     color: #161616;
 }
 
-button:active {
+.default-button:active {
     background-color: #ff9900;
     border-color: #ff9900;
     box-shadow: 0 0 10px #ffffff88;
 }
-

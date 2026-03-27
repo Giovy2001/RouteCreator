@@ -4,7 +4,7 @@ body {
     color: #161616;
     height: 120%;
 }
-button {
+.default-button {
     background-color: #161616;
     border-color: #161616;
     color: white;

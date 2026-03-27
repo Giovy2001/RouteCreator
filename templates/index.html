@@ -22,8 +22,9 @@
     <link rel="stylesheet" href="/static/css/input.css" type="text/css">
     <link rel="stylesheet" href="/static/css/index.css" type="text/css">
 
-    <!-- Save username in the local browser data -->
+    <!-- Local storage related scripts -->
     <script src="/static/js/profile/username.js" defer></script>
+    <script src="/static/js/profile/bottom-nav-update.js" defer></script>
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/4f9d6b6c17.js" crossorigin="anonymous"></script>
@@ -49,13 +50,13 @@
         </div>
         <div class="usernameWrapper">
             <input type="text" id="usernameInput" class="flex-input" placeholder="Scrivi il tuo nome" onchange="saveUsername()">
-            <button type="button" onclick="saveUsername()">Salva</button>
+            <button type="button" onclick="saveUsername()" class="default-button">Salva</button>
         </div>
     </div>
 
     <!-- New route button -->
     <div class="new-route">
-        <button onclick="window.location.href='/select_image';" style="width: 100%;">Aggiungi un nuovo blocco</button>
+        <button onclick="window.location.href='/select_image';" style="width: 100%;" class="default-button">Aggiungi un nuovo blocco</button>
     </div>
     <p>&emsp;</p>
 
@@ -88,11 +89,11 @@
 
 
     <nav class="bottom-nav">
-        <button class="nav-item" onclick="window.location.href='/';">
+        <button class="nav-item active" onclick="window.location.href='/';">
             <i class="fa-solid fa-fire fa-xl"></i>
             <span class="label">Esplora</span>
         </button>
-        <button class="nav-item">
+        <button class="nav-item" id="create-button-hidden">
             <i class="fa-solid fa-circle-plus fa-xl"></i>
             <span class="label">Crea</span>
         </button>
@@ -100,7 +101,7 @@
             <i class="fa-solid fa-box-open fa-xl"></i>
             <span class="label">Archivio</span>
         </button>
-        <button class="nav-item active" onclick="window.location.href='/profile';">
+        <button class="nav-item" onclick="window.location.href='/profile';">
             <i class="fa-solid fa-user fa-xl"></i>
             <span class="label">Profilo</span>
         </button>

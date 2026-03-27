@@ -4,6 +4,8 @@ function saveUsername() {
 
   /* remove old local storage entry */
   localStorage.removeItem("boulderUsername")
+
+  update_bottom_nav()
 }
 
 function loadUsername() {
