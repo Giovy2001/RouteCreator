@@ -1,6 +1,6 @@
 <head>
     <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" id="apple-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
     <link rel="manifest" href="/static/icons/site.webmanifest">
@@ -8,7 +8,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Manrope:wght@200..800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Chalk&Track - Profile</title>
@@ -16,12 +21,19 @@
     <link rel="stylesheet" href="/static/css/palette.css" type="text/css">
     <link rel="stylesheet" href="/static/css/bottom-nav.css" type="text/css">
 
-
     <link rel="stylesheet" href="/static/css/body.css" type="text/css">
+
+    <link rel="stylesheet" href="/static/css/home/profile.css" type="text/css">
+
 
     <!-- Local storage related scripts -->
     <script src="/static/js/profile/username.js" defer></script>
     <script src="/static/js/profile/bottom-nav-update.js" defer></script>
+
+    <!-- Profile color -->
+    <script src="/static/js/profile/profile-color-switcher.js" defer></script>
+    <script src="/static/js/profile/website-icon-update.js" defer></script>
+
 
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/4f9d6b6c17.js" crossorigin="anonymous"></script>
@@ -33,42 +45,202 @@
 <div class="grain"></div>
 
 <body>
-    <!-- User selector -->
-    <p>&emsp;</p>
-    <div class="userBar">
-        <div class="userLabel">
-            <a>Nome utente:</a>
-        </div>
-        <div class="usernameWrapper">
-            <input type="text" id="usernameInput" class="flex-input" placeholder="Scrivi il tuo nome" onchange="saveUsername()">
-        </div>
-    </div>
+        <!-- Profile Header Section -->
+        <section>
+            <div class="relative">
+                <div class="profile-image-container">
+                    <img class="profile-image" id="profile-image" src="/static/icons/profile/Icon_0.png"/>
+                    <div class="profile-tag">PRO</div>
+                    
+                    <button class="profile-color-selector" onclick="switch_profile_color()">
+                        <div class="profile-color-active" id="profile-color-active"></div>
+                        <div class="profile-color-customize">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                    </button>
+                </div>                    
+                    
+                <input type="text" id="usernameInput" class="username-input" placeholder="Scrivi il tuo nome"
+                onchange="saveUsername()">
+            </div>
+        </section>
+        
+        
+        <!-- Stats Grid -->
+        <section class="stat-grid">
+            <div class="cell-grid">
+                <p class="cell-title">Blocchi creati</p>
+                <h3 class="cell-value">3</h3>
+            </div>
+            <div class="cell-grid">
+                <p class="cell-title">Grado più elevato</p>
+                <h3 class="cell-value">E</h3>
+            </div>
+        </section>
 
 
+        <!-- Content Tabs/Sections -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <!-- Sent List (Large Column) -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-headline font-bold text-2xl tracking-tight flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary"
+                            data-icon="check_circle">check_circle</span>
+                        BLOCCHI COMPLETATI
+                    </h3>
+                    <button
+                        class="text-primary font-label text-xs font-bold uppercase tracking-widest hover:underline">Vedi tutti
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <!-- Sent Card 1 -->
+                    <div
+                        class="group bg-surface-container-high hover:bg-surface-bright transition-all p-5 flex items-center gap-6">
+                        <div class="w-16 h-16 overflow-hidden shrink-0">
+                            <img alt="Route"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                data-alt="Vertical granite rock wall with cracks"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgeaLWsLIKngvTYnYO2D7ciXPHtVKfiVPRsGfabSe4yzACSeFNIHbctowh8rAfKfXmVMxi7c7sgd7iuYLg9rRtllQZUnuVxlMol3_ZWPDzDsC5K0yFgBuOiY0bil-DVl7VhbG3BlFihsIJaQ7Jy1taBWs8A0pvvh_GUQQ_CXpZB3TTS3pMFpi36-mfoEUfPZxuwrrNlcRc9M3yfrj848h9RvlJUZI89khsi0vpMGVgdGS8O8iVn_HUMspiSNxLwdMBTMuUhsT4SZY" />
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-headline font-bold text-lg leading-tight mb-1">Midnight Lightning</h4>
+                            <p class="text-on-surface-variant text-sm font-medium">Camp 4, Yosemite • 2 days ago</p>
+                        </div>
+                        <div class="text-right">
+                            <div
+                                class="bg-surface-bright text-secondary font-headline font-black px-3 py-1 text-lg italic">
+                                Grade C</div>
+                            <p class="text-[10px] font-label text-on-surface-variant mt-1 uppercase">Flash</p>
+                        </div>
+                    </div>
+                    <!-- Sent Card 2 -->
+                    <div
+                        class="group bg-surface-container-high hover:bg-surface-bright transition-all p-5 flex items-center gap-6">
+                        <div class="w-16 h-16 overflow-hidden shrink-0">
+                            <img alt="Route"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                data-alt="Red sandstone climbing wall with holds"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuyTwHmWYXbHZuDMigdUujajyfPpFscbQSDRriyqD76UuJh0vWa5ay8JbemQH9y_Yq3D-bvrivmes_fkwlb3zk6ZL-wgAMYhSAODdRb8ylgagj0-H-g85Fl8afoZmX4OOxyn4FMfNM1sBW3NIWVpz_73G9mGve7AJ43Ov8whX9tK0GZnPdRwQmQKBSV2VEuzlKJQKxDt9_6x29-Bjdq91cRXbSgRvXqmP8jGWpHpxWOts0x9mNW01dwiWTQHjyjps8sQ7vxFknEk8" />
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-headline font-bold text-lg leading-tight mb-1">The Buttermilks</h4>
+                            <p class="text-on-surface-variant text-sm font-medium">Bishop, CA • 1 week ago</p>
+                        </div>
+                        <div class="text-right">
+                            <div
+                                class="bg-surface-bright text-secondary font-headline font-black px-3 py-1 text-lg italic">
+                                Grade E</div>
+                            <p class="text-[10px] font-label text-on-surface-variant mt-1 uppercase">Projected</p>
+                        </div>
+                    </div>
+                    <!-- Sent Card 3 -->
+                    <div
+                        class="group bg-surface-container-high hover:bg-surface-bright transition-all p-5 flex items-center gap-6">
+                        <div class="w-16 h-16 overflow-hidden shrink-0">
+                            <img alt="Route"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                data-alt="Detailed texture of gray rock face"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5kpWgWgazgJ5gwKXM9fdyXSgeACsYwk4elxn7DyGsGj-mm7CQ1mwdvjUXknTF4gVyPHeZKGkZgdBC0dUF2HgnhmJ7vLaj3KQcGf9RySJYBn3pmve3XH7iP1QSF2k4rzh--5f7jOALjJ9RiVmIwq9usJOWSnMpyRvObhaEg8kkM5pLPykhny7wbnuGGLinnVu9Jc45XhPnNoZHaFuZorDNJ9DZrAKkKOYrL7T1bKqupHzFtldZhq2kZjbPneFc7utduSoorhkwiKs" />
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-headline font-bold text-lg leading-tight mb-1">Solar Flare</h4>
+                            <p class="text-on-surface-variant text-sm font-medium">Joshua Tree • 3 weeks ago</p>
+                        </div>
+                        <div class="text-right">
+                            <div
+                                class="bg-surface-bright text-secondary font-headline font-black px-3 py-1 text-lg italic">
+                                Grade B</div>
+                            <p class="text-[10px] font-label text-on-surface-variant mt-1 uppercase">Repeat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- My Routes (Side Column) -->
+            <div class="space-y-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-headline font-bold text-2xl tracking-tight flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary" data-icon="edit_square">edit_square</span>
+                        I MIEI BLOCCHI
+                    </h3>
+                </div>
+                <div class="space-y-4">
+                    <!-- Created Route 1 -->
+                    <div
+                        class="bg-surface-container-low p-4 border border-outline-variant/10 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="relative z-10">
+                            <h4 class="font-headline font-bold text-md mb-2">Techno-Tension</h4>
+                            <div class="flex gap-2">
+                                <span
+                                    class="bg-surface-container-highest text-[10px] font-label px-2 py-0.5 text-on-surface-variant">GYM</span>
+                                <span
+                                    class="bg-surface-container-highest text-[10px] font-label px-2 py-0.5 text-on-surface-variant">OVERHANG</span>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="font-headline font-black text-primary italic">Grade D</span>
+                                <div class="flex items-center gap-2 text-on-surface-variant text-xs font-bold">
+                                    <span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span>
+                                    24
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Created Route 2 -->
+                    <div
+                        class="bg-surface-container-low p-4 border border-outline-variant/10 relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div class="relative z-10">
+                            <h4 class="font-headline font-bold text-md mb-2">Static Silence</h4>
+                            <div class="flex gap-2">
+                                <span
+                                    class="bg-surface-container-highest text-[10px] font-label px-2 py-0.5 text-on-surface-variant">CRAG</span>
+                                <span
+                                    class="bg-surface-container-highest text-[10px] font-label px-2 py-0.5 text-on-surface-variant">SLAB</span>
+                            </div>
+                            <div class="mt-4 flex justify-between items-center">
+                                <span class="font-headline font-black text-primary italic">Grade B</span>
+                                <div class="flex items-center gap-2 text-on-surface-variant text-xs font-bold">
+                                    <span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span>
+                                    112
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Create New CTA -->
+                    <div
+                        class="border-2 border-dashed border-outline-variant/30 p-6 flex flex-col items-center justify-center text-center gap-3 hover:border-primary/50 transition-colors cursor-pointer group">
+                        <div
+                            class="bg-surface-container-high w-12 h-12 flex items-center justify-center group-hover:bg-primary transition-colors">
+                            <span class="material-symbols-outlined text-on-surface group-hover:text-on-primary"
+                                data-icon="add">add</span>
+                        </div>
+                        <p class="font-headline font-bold text-sm tracking-widest text-on-surface-variant uppercase">NUOVO BLOCCO</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     <nav class="bottom-nav">
         <button class="nav-item" onclick="window.location.href='/';">
             <i class="fa-solid fa-fire fa-xl"></i>
-            <span class="label">Esplora</span>
+            <span class="label">ESPLORA</span>
         </button>
         <button class="nav-item" id="create-button-hidden">
             <i class="fa-solid fa-circle-plus fa-xl"></i>
-            <span class="label">Crea</span>
+            <span class="label">CREA</span>
         </button>
         <button class="nav-item">
             <i class="fa-solid fa-box-open fa-xl"></i>
-            <span class="label">Archivio</span>
+            <span class="label">ARCHIVIO</span>
         </button>
         <button class="nav-item active" onclick="window.location.href='/profile';">
             <i class="fa-solid fa-user fa-xl"></i>
-            <span class="label">Profilo</span>
+            <span class="label">PROFILO</span>
         </button>
     </nav>
 </body>
-
-
-
-
-
-

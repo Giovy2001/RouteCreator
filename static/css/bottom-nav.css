@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: var(--dark);
+  background: var(--very-dark);
   padding: 6px 0;
   z-index: 1000;
 }

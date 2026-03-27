@@ -1,5 +1,8 @@
 body {
     /* Font */
+
+    /* TODO: remove fonts from here */
+
     font-family: "Fredoka", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -11,14 +14,17 @@ body {
     -ms-user-select: none;
     user-select: none;
 
+
     /* Backgound and margin */
-    background-color: #1C2026;
+    background-color: var(--very-dark);
     margin: 20px;
 }
 
+
+
 /* background grain multiply */
 .background_color {
-    background-color: #2e343f;
+    background-color: var(--dark);
     position: fixed;
     top: 0;
     left: 0;
