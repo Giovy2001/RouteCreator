@@ -1,0 +1,30 @@
+body {
+    margin: 4rem;
+    display: flex;
+    justify-content: center;  /* centro orizzontale */
+    align-items: center;      /* centro verticale */
+    touch-action:none;
+}
+
+.centerblock {
+    transform: translate(0,-2rem);
+    text-align: center; /* opzionale, per centrare il testo */
+}
+
+.title {
+    font-family: "Major Mono Display", monospace;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: inherit;
+}
+
+.underdev {
+    font-size: x-large;
+    font-weight: 700;
+    font-family: "Major Mono Display", monospace;
+    text-align: center;
+}

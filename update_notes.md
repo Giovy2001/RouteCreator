@@ -27,47 +27,82 @@
             [x] valutare di aggiungere altre informazioni
 
 # TODO UPDATE #3.1 - App sections rework
+    [x] rimuovere tutti i css a button object (perché sfanculano tutto)
+        [x] vanno sostituiti con le modifiche al class name specifico
 
-    [ ] Creare palette comune
-        [x] :root{} dovrebbe funzionare (cerca su internet)
-        [ ] sostituire tutti i colori nel css con il riferimento alla variabile
-
-    [ ] rimuovere tutti i css a button object (perché sfanculano tutto)
-        [ ] vanno sostituiti con le modifiche al class name specifico
-
-    [ ] l'elemento selezionato della bar deve avere un riguardo di selezione (come stitch)
+    [x] l'elemento selezionato della bar deve avere un riguardo di selezione (come stitch)
+    [x] su iphone quando metti il nome senza riavviare la pagina le scritte sono sfalsate
 
     [ ] Implementare le quattro diverse sezioni
-        [ ] Esplora 
-            [ ] Per ora non porta a nulla
-            [ ] Magari under construction page
-        [ ] Crea
-            [ ] Fai in modo che sia visibile solo se username è salvato nel local_storage
-        [ ] Archivio
-            [ ] l'attuale index
+        [x] Esplora 
+            [x] Per ora non porta a nulla
+            [x] Magari under construction page
+        [x] Crea
+            [x] Fai in modo che sia visibile solo se username è salvato nel local_storage
+            [x] Collega creazine al pulsante
+        [x] Archivio
+            [x] l'attuale index
+            [x] sposta l'index su un nuovo file
+            [x] Togli cose del profilo 
         [ ] Profilo
-            [ ] Icona del profilo
-            [ ] Colore del profilo
+            [ ] Crea back end
+                [ ] Crea profilo entry quando viene messo un nome che non esiste già
+                [ ] Se esiste già load il profilo esistente
+                    [ ] salta il check quando viene caricato da local storage (esiste per forza)
+                [ ] Load
+                    [ ] serialized completed routes per la sezione completati
+                    [ ] load di tutti i blocchi dove autore è username (per la sezione blocchi tuoi e per le statistiche di blocchi creati e grado più alto)
+            [ ] Front end logic
+                [ ] Nascondi stat se non ci sono da mostrare
+                [ ] Nascondi blocchi completati se non ce ne sono
+                [ ] (i miei blocchi non è mai nascosto perché volendo c'è il pulsantino per aggiungerli)
+                [ ] Tag sulla base di quanti blocchi hai completato
+                    NEW — 0 → 200
+                    BEG — 200 → 500
+                    INT — 500 → 1.000
+                    ADV — 1.000 → 2.500
+                    EXP — 2.500 → 5.000
+                    PRO — 5.000+
+            [x] Icona del profilo
+            [x] Colore del profilo
                 
-    [ ] Icona sito
+    [x] Icona sito
         [x] L'icona piccola dovrebbe essere solo logo (senza scritta e con bordi arrotondati)
-        [ ] Inserire su ogni head le informazioni dell'icona
-        [ ] Magari potrei avere diverse icone (quelle che vengono esportate sulla home iphone) una per colore del profilo così da poter customizzare l'icona
-            [ ] Non così facile, magari bisogna riavviare la pagina ma dovrebbe essere possibile
+        [x] Inserire su ogni head le informazioni dell'icona
+        [x] Magari potrei avere diverse icone (quelle che vengono esportate sulla home iphone) una per colore del profilo così da poter customizzare l'icona
+            [x] Non così facile, magari bisogna riavviare la pagina ma dovrebbe essere possibile
     [x] Cambiare nome a salvataggio nel local storage "chalk_and_track_username"
 
     [ ] Re inizializzare databases, sia local che turso (applicare le modifiche alle tables)
         [ ] Droppare le tabelle su turso prima per far si che vengano ricreate in modo corretto.
+        [ ] Rimettere i due blocchi.
+        [ ] Non so se conveine droppare le tabelle
+        [ ] Magari modifico a mano routes e holds dove serve (potrebbe essere un problema per il linked author nelle routes)
+
+    [ ] Usare la bottom nav come navigazione ovunque (anche condition va messa la bottom nav per tornare indietro)
+
+    [ ] Creare palette comune
+        [x] :root{} dovrebbe funzionare (cerca su internet)
+        [ ] sostituire tutti i colori nel css con il riferimento alla variabile
 
 
 # TODO UPDATE #4 - Rework Route creation
 
     [ ] Provare a vedere se è possibile processare l'immagine lato client in modo da rendere più leggero il caricamento
     
-    [ ] Scrap dell'idea delle tre fasi
+    [ ] Scrap dell'idea delle tre fasi, è fattibile?
         [ ] Fase unica con la pagina lunga come da stitch
+        [ ] Riattivare lo scroll ma non lo zoom
+        [ ] Si può rendere utilizzabile?
 
-    [ ] Riattivare lo scroll ma non lo zoom
+        [ ] L'idea migliore forse è:
+            sempre solo una fase, ma la selezione è a parte
+            [ ] Inizio sulla pagina di creazione (stitch),
+            [ ] Possibilità di caricare l'immagine da li
+            [ ] Una volta caricata rischiacciarci ti fa entrare nella modalità modifica prese
+                [ ] Foto a tutto schermo, no zoom, no scroll, ecc...
+    [ ] Usare la bottom nav come navigazione
+
     [ ] Valutare possibilità di ingrandire e rimpicciolire la presa con lo zoom (gesture pizzicata)
     [ ] Valutare possibilità di cambiare tipo di presa tenendo premuto su di essa
 
@@ -78,6 +113,7 @@
         
     [ ] Far si che una volta selezionata una presa tu possa scrollare in qualsiasi punto dello schermo per spostarla
         [ ] Valutare differenza tra de-selezione e hold-drag
+        [ ] Valutare possibilità di uno zoom?
 
 
 # TODO UPDATE #5 - Archivio

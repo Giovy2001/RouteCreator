@@ -2,9 +2,8 @@ from flask import render_template
 from scripts.database_sql import sql_routes
 import global_values
 
-def index():
+def render_home_archive():
     routes = sql_routes.get_all_routes(global_values.conn)
-    return render_template("index.html", routes=routes)
+    return render_template("home/archive.html", routes=routes)
 
-def use_condition():
-    return render_template("use_condition.html")
+# TODO: cambia index nel nuovo file

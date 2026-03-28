@@ -20,7 +20,8 @@
 
     <link rel="stylesheet" href="/static/css/body.css" type="text/css">
     <link rel="stylesheet" href="/static/css/input.css" type="text/css">
-    <link rel="stylesheet" href="/static/css/index.css" type="text/css">
+
+    <link rel="stylesheet" href="/static/css/home/archive.css" type="text/css">
 
     <!-- Local storage related scripts -->
     <script src="/static/js/profile/username.js" defer></script>
@@ -36,30 +37,12 @@
 
 <body>
     <!-- Title -->
-    <p>&emsp;</p>
     <div class="title">
         <h1>PalaEnrosadira</h1>
         <h3>Chalk & Track</h3>
     </div>
 
-    <!-- User selector -->
     <p>&emsp;</p>
-    <div class="userBar">
-        <div class="userLabel">
-            <a>Nome utente:</a>
-        </div>
-        <div class="usernameWrapper">
-            <input type="text" id="usernameInput" class="flex-input" placeholder="Scrivi il tuo nome" onchange="saveUsername()">
-            <button type="button" onclick="saveUsername()" class="default-button">Salva</button>
-        </div>
-    </div>
-
-    <!-- New route button -->
-    <div class="new-route">
-        <button onclick="window.location.href='/select_image';" style="width: 100%;" class="default-button">Aggiungi un nuovo blocco</button>
-    </div>
-    <p>&emsp;</p>
-
     <!-- Grid -->
     <div class="grid">
         {% for route in routes %}
@@ -89,21 +72,21 @@
 
 
     <nav class="bottom-nav">
-        <button class="nav-item active" onclick="window.location.href='/';">
-            <i class="fa-solid fa-fire fa-xl"></i>
-            <span class="label">Esplora</span>
+        <button class="nav-item" onclick="window.location.href='/';">
+            <i class="fa-solid fa-fire fa-xl nav-icon"></i>
+            <span class="nav-label">Esplora</span>
         </button>
-        <button class="nav-item" id="create-button-hidden">
-            <i class="fa-solid fa-circle-plus fa-xl"></i>
-            <span class="label">Crea</span>
+        <button class="nav-item" id="create-button-hidden" onclick="window.location.href='/select_image';">
+            <i class="fa-solid fa-circle-plus fa-xl nav-icon"></i>
+            <span class="nav-label">Crea</span>
         </button>
-        <button class="nav-item">
-            <i class="fa-solid fa-box-open fa-xl"></i>
-            <span class="label">Archivio</span>
+        <button class="nav-item active" onclick="window.location.href='/archive';">
+            <i class="fa-solid fa-box-open fa-xl nav-icon"></i>
+            <span class="nav-label">Archivio</span>
         </button>
         <button class="nav-item" onclick="window.location.href='/profile';">
-            <i class="fa-solid fa-user fa-xl"></i>
-            <span class="label">Profilo</span>
+            <i class="fa-solid fa-user fa-xl nav-icon"></i>
+            <span class="nav-label">Profilo</span>
         </button>
     </nav>
 </body>
