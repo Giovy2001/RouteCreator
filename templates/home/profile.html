@@ -49,8 +49,13 @@
         <section>
             <div class="relative">
                 <div class="profile-image-container">
-                    <img class="profile-image" id="profile-image" src="/static/icons/profile/Icon_0.png"/>
-                    <div class="profile-tag">PRO</div>
+                    <img class="profile-image" id="profile-image" src=""/>
+                    <div class="profile-tag">PRO</div> <!-- TODO: js dynamic -->
+
+                    <div class="score-container">
+                        <p class="username-input score">12.030</p> <!-- TODO: js dynamic -->
+                        <p class="username-input score-unit">punti</p>
+                    </div>
                     
                     <button class="profile-color-selector" onclick="switch_profile_color()">
                         <div class="profile-color-active" id="profile-color-active"></div>
@@ -59,9 +64,12 @@
                         </div>
                     </button>
                 </div>                    
-                    
-                <input type="text" id="usernameInput" class="username-input" placeholder="Scrivi il tuo nome"
-                onchange="saveUsername()">
+                
+                <div class="username-container">
+                    <p class="cell-title user-title">Nome utente</p>
+                    <i class="fa-solid fa-user-pen fa-xl edit-user"></i>
+                    <input type="text" id="usernameInput" class="username-input" placeholder="Scrivi il tuo nome" onchange="saveUsername()">
+                </div>
             </div>
         </section>
         
@@ -70,11 +78,11 @@
         <section class="stat-grid">
             <div class="cell-grid">
                 <p class="cell-title">Blocchi creati</p>
-                <h3 class="cell-value">3</h3>
+                <h3 class="cell-value">3</h3> <!-- TODO: js dynamic -->
             </div>
             <div class="cell-grid">
                 <p class="cell-title">Grado più elevato</p>
-                <h3 class="cell-value">E</h3>
+                <h3 class="cell-value">E</h3> <!-- TODO: js dynamic -->
             </div>
         </section>
 

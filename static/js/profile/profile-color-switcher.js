@@ -51,6 +51,9 @@ function loadColor() {
     profile_color_active.style.backgroundColor = palette[saved];
     profile_image.src = `/static/icons/profile/Icon_${saved}.png`
     update_website_icon(saved)
+  } else {
+    profile_image.src = `/static/icons/profile/Icon_${0}.png`
+    update_website_icon(0)
   }
 }
 

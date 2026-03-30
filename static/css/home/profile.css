@@ -49,9 +49,7 @@ object {
     position: absolute
 }
 
-.relative {
-    position: relative
-}
+
 
 .inset-0 {
     inset: 0
@@ -690,6 +688,10 @@ object {
 
 /* Header */
 
+.relative {
+    position: relative
+}
+
 .profile-image-container {
     position: relative;
     margin: 2rem;
@@ -771,36 +773,70 @@ object {
     outline: none;
 
     /* Text */
-    color: var(--very-light);
+    color: var(--primary-light);
     font-family: Space Grotesk;
     font-weight: 900;
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+    font-size: 2rem;
     letter-spacing: -.05em;
 
     /* Positioning */
     box-sizing: border-box;
     width: 100%;
-    margin-top: .5rem;
-    margin-bottom: 2rem;
-
+    transform: translate(0,-.5rem);
 
     /* Container */
-    background-color: var(--dark);
+    background-color: transparent;
     padding-left: 1rem;
-    padding-right: .50rem;
-    padding-top: .50rem;
-    padding-bottom: .50rem;
+}
+
+.username-container {
+    background-color: var(--dark);
+    display: grid;
+    grid-template-rows: 2;
+
+    height: 5rem;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+}
+
+.edit-user {
+    position: absolute;
+    right: 1rem;
+    align-self: center;
+}
+
+.user-title {
+    transform: translate(0,.5rem);
 }
 
 .username-input::placeholder {
-    color: var(--primary);
+    color: var(--medium);
     font-style: italic;
     text-transform: uppercase;
-    text-align: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     vertical-align: middle;
+    align-self: center;
 }
+
+.score-container {
+    display: grid;
+    grid-template-rows: 2;
+    transform: translate(1rem,3.4rem);
+}
+
+.score {
+    color: var(--very-light);
+    margin: 0;
+    font-style: italic;
+}
+
+.score-unit {
+    margin: 0;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transform: translate(0,-1.2rem);
+}
+
 
 .defalt-hidden {
     display: none;
