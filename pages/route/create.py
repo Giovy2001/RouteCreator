@@ -42,6 +42,6 @@ def save_route():
         
         sql_routes.add_route(global_values.conn, route_data, holds_array)
         
-        return redirect(url_for("index"))
+        return redirect(url_for("render_home_archive"))
 
     return render_template("save_route.html")

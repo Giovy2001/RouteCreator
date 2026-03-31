@@ -18,7 +18,7 @@ def view_route(route_id):
         elif 'authorDelete' in request.form:
             image_handler.delete(route_object["image_url"])
             sql_routes.del_route(global_values.conn, route_object["route_id"])
-            return redirect(url_for("index"))
+            return redirect(url_for("render_home_archive"))
 
     return render_template("view.html",
         route=route_object,

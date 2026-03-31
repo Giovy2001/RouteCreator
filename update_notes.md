@@ -46,9 +46,12 @@
             [x] Togli cose del profilo 
         [ ] Profilo
             [ ] Crea back end
-                [ ] Crea profilo entry quando viene messo un nome che non esiste già
-                [ ] Se esiste già load il profilo esistente
-                    [ ] salta il check quando viene caricato da local storage (esiste per forza)
+                [ ] Importante: trova un modo di evitare tutti i redirect delle pagine. Sono sicuro che con gli endpoint backend (come per il colore) si possa risolvere tutto
+                [ ] Inoltre si può cambiare con lo script update bottom nav il link href così che se non c'è username nel local storage manda direttamente alla creazione
+                [x] Quando l'user non esiste nel database, redirecta ad un altra pagina in cui ti fa accettare le condizioni e confermare la creazione dell'utente. Poi crea nel database
+                [x] Crea profilo entry quando viene messo un nome che non esiste già
+                [x] Se esiste già load il profilo esistente
+                    [x] salta il check quando viene caricato da local storage (esiste per forza)
                 [ ] Load
                     [ ] serialized completed routes per la sezione completati
                     [ ] load di tutti i blocchi dove autore è username (per la sezione blocchi tuoi e per le statistiche di blocchi creati e grado più alto)

@@ -46,6 +46,23 @@ def get_all_routes(conn: libsql.Connection) -> list:
     return [format_table(route) for route in routes]
 
 
+def get_routes_from_author(conn: libsql.Connection, author: str) -> list:
+    """
+    Retrieve all routes from the database that match author.
+    Args:
+        conn (libsql.Connection): The connection object to the sql database
+        author (str): The name of the user.
+    Returns:
+        routes_list (list): A list of tuples containing all routes from the routes table.
+              Each tuple represents a row with all columns from the routes table.
+              Returns an empty list if no routes exist.
+    """
+    
+    cursor: libsql.Cursor = conn.cursor()
+    routes: list = cursor.execute("SELECT * FROM routes WHERE author=?", (author,)).fetchall()
+    return [format_table(route) for route in routes]
+
+
 def get_route(conn: libsql.Connection, route_id: int) -> dict:
     """
     Retrieve a single route record from the database by its ID.

@@ -27,8 +27,8 @@
 
 
     <!-- Local storage related scripts -->
-    <script src="/static/js/profile/username.js" defer></script>
-    <script src="/static/js/profile/bottom-nav-update.js" defer></script>
+    <script src="/static/js/profile/bottom-nav-update.js"></script>
+    <script src="/static/js/profile/username.js"></script>
 
     <!-- Profile color -->
     <script src="/static/js/profile/profile-color-switcher.js" defer></script>
@@ -53,7 +53,7 @@
                     <div class="profile-tag">PRO</div> <!-- TODO: js dynamic -->
 
                     <div class="score-container">
-                        <p class="username-input score">12.030</p> <!-- TODO: js dynamic -->
+                        <p class="username-input score">{{user_data['points']}}</p>
                         <p class="username-input score-unit">punti</p>
                     </div>
                     
@@ -68,7 +68,11 @@
                 <div class="username-container">
                     <p class="cell-title user-title">Nome utente</p>
                     <i class="fa-solid fa-user-pen fa-xl edit-user"></i>
-                    <input type="text" id="usernameInput" class="username-input" placeholder="Scrivi il tuo nome" onchange="saveUsername()">
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="text" id="usernameInput" class="username-input" name="username-input" placeholder="Scrivi il tuo nome" onchange="this.form.submit()">
+                    </form>
+                    
                 </div>
             </div>
         </section>
@@ -78,7 +82,7 @@
         <section class="stat-grid">
             <div class="cell-grid">
                 <p class="cell-title">Blocchi creati</p>
-                <h3 class="cell-value">3</h3> <!-- TODO: js dynamic -->
+                <h3 class="cell-value">{{ routes_data | length }}</h3> <!-- TODO: js dynamic -->
             </div>
             <div class="cell-grid">
                 <p class="cell-title">Grado più elevato</p>
@@ -260,3 +264,14 @@
         </button>
     </nav>
 </body>
+
+
+<script>
+    const user_data = {{ user_data | default(false) | tojson }}
+
+    const username_created = {{ username_created | default(false) | tojson }}
+    createUsername(username_created)
+
+    const username_changed = {{ username_changed | default(false) | tojson }}
+    changeUsername(username_changed, user_data["user_color"])
+</script>

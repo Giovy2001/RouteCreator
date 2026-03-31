@@ -14,7 +14,6 @@ def format_table(user_object: tuple) -> dict:
         user_object (tuple): A tuple containing user data in the following order:
             - user_id: Unique identifier for the user
             - user_name: Name of the user
-            - user_icon: Icon associated with the user
             - user_color: Color preference of the user
             - creation_date: Date when the user account was created
             - last_seen_date: Date when the user was last active
@@ -22,7 +21,7 @@ def format_table(user_object: tuple) -> dict:
             - serialized_completed_routes: JSON string of completed routes (deserialized as a list)
     """
     
-    table_structure: tuple = ("user_id", "user_name", "user_icon", "user_color", "creation_date", "last_seen_date", "points", "serialized_completed_routes")
+    table_structure: tuple = ("user_id", "user_name", "user_color", "creation_date", "last_seen_date", "points", "serialized_completed_routes")
     user_dict: dict = {table_structure[index]:user_object[index] for index in range(len(table_structure))}
     user_dict["serialized_completed_routes"] = json.loads(user_dict["serialized_completed_routes"])
     return user_dict
@@ -57,7 +56,13 @@ def get_user(conn: libsql.Connection, user_name: int) -> dict:
     
     cursor: libsql.Cursor = conn.cursor()
     user: tuple = cursor.execute("SELECT * FROM users WHERE user_name=?", (user_name,)).fetchone()
-    return format_table(user)
+    
+    if user:
+        user_dict: dict = format_table(user)
+        user_dict["exist"] = True
+        return user_dict
+    else:
+        return {"exist":False}
 
 
 ### SETS
@@ -114,7 +119,6 @@ def add_user(conn: libsql.Connection, user_data: dict) -> None:
         conn (libsql.Connection): Database connection object used to execute queries.
         user_data (dict): Dictionary containing user information with the following keys:
             - user_name (str): The username of the new user.
-            - user_icon (str): The icon/avatar identifier for the user.
             - user_color (str): The color preference for the user.
     Notes:
         - The creation_date and last_seen_date are automatically set to the current date.
@@ -126,8 +130,8 @@ def add_user(conn: libsql.Connection, user_data: dict) -> None:
     
     cursor: libsql.Cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO users(user_name, user_icon, user_color, creation_date, last_seen_date, points, serialized_completed_routes) VALUES (?,?,?,?,?,?,?)",
-        (user_data["user_name"], user_data["user_icon"], user_data["user_color"], creation_date, creation_date, 0, json.dumps([]))
+        "INSERT INTO users(user_name, user_color, creation_date, last_seen_date, points, serialized_completed_routes) VALUES (?,?,?,?,?,?)",
+        (user_data["user_name"], user_data["user_color"], creation_date, creation_date, 0, json.dumps([]))
     )
     
     conn.commit()
@@ -168,8 +172,7 @@ def init_users_table(conn: libsql.Connection) -> None:
     cursor: libsql.Cursor = conn.cursor()    
     cursor.execute("""CREATE TABLE IF NOT EXISTS users(
         user_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_name TEXT,
-        user_icon TEXT,
+        user_name TEXT UNIQUE,
         user_color TEXT,
         creation_date TEXT,
         last_seen_date TEXT,

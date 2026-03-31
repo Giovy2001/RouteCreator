@@ -13,7 +13,8 @@ from pages.home import home_explore, home_profile, home_archive
 from pages import use_condition
 
 app.add_url_rule("/",                           view_func=home_explore.render_home_explore)
-app.add_url_rule("/profile",                    view_func=home_profile.render_home_profile)
+app.add_url_rule("/profile",                    view_func=home_profile.render_home_profile, methods=["GET", "POST"])
+app.add_url_rule("/create_user",                view_func=home_profile.render_create_user,  methods=["GET", "POST"])
 app.add_url_rule("/archive",                    view_func=home_archive.render_home_archive)
 app.add_url_rule("/use_condition",              view_func=use_condition.render_use_condition)
 
@@ -25,7 +26,10 @@ app.add_url_rule("/select_image",               view_func=create.select_image,  
 app.add_url_rule("/create_route",               view_func=create.create_route,          methods=["GET", "POST"])
 app.add_url_rule("/save_route",                 view_func=create.save_route,            methods=["GET", "POST"])
 
+# Backends
+from pages.backend import backend_profile
 
+app.add_url_rule("/backend_update_color",       view_func=backend_profile.update_color, methods=["POST"])
 
 
 if __name__ == "__main__":

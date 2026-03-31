@@ -1,0 +1,84 @@
+<head>
+    <!-- Icons -->
+    <link rel="apple-touch-icon" id="apple-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+    <link rel="manifest" href="/static/icons/site.webmanifest">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Manrope:wght@200..800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Chalk&Track - Create user</title>
+
+    <link rel="stylesheet" href="/static/css/palette.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/bottom-nav.css" type="text/css">
+
+    <link rel="stylesheet" href="/static/css/input.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/body.css" type="text/css">
+
+    <link rel="stylesheet" href="/static/css/home/profile.css" type="text/css">
+
+
+    <script src="/static/js/profile/create_user.js" defer></script>
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/4f9d6b6c17.js" crossorigin="anonymous"></script>
+
+</head>
+
+<!-- Background grain -->
+<div class="background_color"></div>
+<div class="grain"></div>
+
+<body>
+        <!-- Profile Header Section -->
+        <section>
+            <div class="relative">                  
+                <div class="username-container">
+                    <p class="cell-title user-title">Nome utente</p>
+                    <i class="fa-solid fa-user-pen fa-xl edit-user"></i>
+                    
+                    <form method="POST" enctype="multipart/form-data">
+                        <input type="text" name="username-input" id="usernameInput" class="username-input" placeholder="Scrivi il tuo nome">
+                    
+                        <div class="controls">
+                            <button class="default-button">Crea profilo utente</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    <!-- Fine TODO -->
+    
+    <nav class="bottom-nav">
+        <button class="nav-item" onclick="window.location.href='/';">
+            <i class="fa-solid fa-fire fa-xl nav-icon"></i>
+            <span class="nav-label">Esplora</span>
+        </button>
+        <button class="nav-item" id="create-button-hidden" onclick="window.location.href='/select_image';">
+            <i class="fa-solid fa-circle-plus fa-xl nav-icon"></i>
+            <span class="nav-label">Crea</span>
+        </button>
+        <button class="nav-item" onclick="window.location.href='/archive';">
+            <i class="fa-solid fa-box-open fa-xl nav-icon"></i>
+            <span class="nav-label">Archivio</span>
+        </button>
+        <button class="nav-item active" onclick="window.location.href='/profile';">
+            <i class="fa-solid fa-user fa-xl nav-icon"></i>
+            <span class="nav-label">Profilo</span>
+        </button>
+    </nav>
+</body>
+
+<script>
+    const username_edited = {{ username | tojson }};
+</script>
