@@ -1,9 +1,7 @@
 body {
     /* Font */
 
-    /* TODO: remove fonts from here */
-
-    font-family: "Fredoka", sans-serif;
+    font-family: 'Space Grotesk';
     font-optical-sizing: auto;
     font-style: normal;
     color: var(--very-light);
