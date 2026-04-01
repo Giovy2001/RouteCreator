@@ -6,28 +6,20 @@ def render_home_profile():
     username_created: str = request.args.get("username_created")
     username_changed: str = request.args.get("username_changed")
     
-    username: str = request.args.get("username")
-    if username_created:
-        username = username_created
-    elif username_changed:
-        username = username_changed
-    
-    user_data: dict = sql_users.get_user(global_values.conn, username)
-    routes_data: list = sql_routes.get_routes_from_author(global_values.conn, username)
-    print(user_data)
-    print(routes_data)
-    
     if request.method == "POST":
+        """ Cambiato il nome all'interno del profile tab """
         new_username: str = request.form.get("username-input")
         user_data: dict = sql_users.get_user(global_values.conn, new_username)
         
         if not user_data["exist"]:
+            """ Redirect alla creazione del profilo """
             return redirect(url_for("render_create_user", username=new_username))
         else:
+            """ Riavvia pagina con il nuovo username """
             return redirect(url_for("render_home_profile", username_changed=new_username))
     
-    
-    return render_template("home/profile.html", username_created=username_created, username_changed=username_changed, user_data=user_data, routes_data=routes_data)
+    return render_template("home/profile.html", username_created=username_created, username_changed=username_changed)
+
 
 def render_create_user():
     username: str = request.args.get("username")

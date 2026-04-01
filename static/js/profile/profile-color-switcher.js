@@ -55,19 +55,25 @@ function switch_profile_color() {
   localStorage.setItem("chalk_and_track_color", new_value);
 }
 
-function loadColor() {
-  const saved = localStorage.getItem("chalk_and_track_color");
+function setColor(color_id) {
   let profile_color_active = document.getElementById("profile-color-active");
   let profile_image = document.getElementById("profile-image");
+  localStorage.setItem("chalk_and_track_color", color_id);
 
-  if (saved) {
-    profile_color_active.style.backgroundColor = palette[saved];
-    profile_image.src = `/static/icons/profile/Icon_${saved}.png`
-    update_website_icon(saved)
+  if (color_id) {
+    profile_color_active.style.backgroundColor = palette[color_id];
+    profile_image.src = `/static/icons/profile/Icon_${color_id}.png`
+    update_website_icon(color_id)
   } else {
     profile_image.src = `/static/icons/profile/Icon_${0}.png`
     update_website_icon(0)
   }
+}
+
+function loadColor() {
+  const saved = localStorage.getItem("chalk_and_track_color");
+
+  setColor(saved)
 }
 
 document.addEventListener("DOMContentLoaded", loadColor);

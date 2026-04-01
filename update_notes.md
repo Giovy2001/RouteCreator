@@ -46,7 +46,7 @@
             [x] Togli cose del profilo 
         [ ] Profilo
             [ ] Crea back end
-                [ ] Importante: trova un modo di evitare tutti i redirect delle pagine. Sono sicuro che con gli endpoint backend (come per il colore) si possa risolvere tutto
+                [x] Importante: trova un modo di evitare tutti i redirect delle pagine. Sono sicuro che con gli endpoint backend (come per il colore) si possa risolvere tutto
                 [ ] Inoltre si può cambiare con lo script update bottom nav il link href così che se non c'è username nel local storage manda direttamente alla creazione
                 [x] Quando l'user non esiste nel database, redirecta ad un altra pagina in cui ti fa accettare le condizioni e confermare la creazione dell'utente. Poi crea nel database
                 [x] Crea profilo entry quando viene messo un nome che non esiste già
@@ -56,10 +56,10 @@
                     [ ] serialized completed routes per la sezione completati
                     [ ] load di tutti i blocchi dove autore è username (per la sezione blocchi tuoi e per le statistiche di blocchi creati e grado più alto)
             [ ] Front end logic
-                [ ] Nascondi stat se non ci sono da mostrare
+                [x] Nascondi stat se non ci sono da mostrare
                 [ ] Nascondi blocchi completati se non ce ne sono
                 [ ] (i miei blocchi non è mai nascosto perché volendo c'è il pulsantino per aggiungerli)
-                [ ] Tag sulla base di quanti blocchi hai completato
+                [x] Tag sulla base di quanti blocchi hai completato
                     NEW — 0 → 200
                     BEG — 200 → 500
                     INT — 500 → 1.000

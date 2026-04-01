@@ -28,6 +28,7 @@
 
     <!-- Local storage related scripts -->
     <script src="/static/js/profile/bottom-nav-update.js"></script>
+    <script src="/static/js/profile/profile_data_request.js"></script>
     <script src="/static/js/profile/username.js"></script>
 
     <!-- Profile color -->
@@ -50,10 +51,10 @@
             <div class="relative">
                 <div class="profile-image-container">
                     <img class="profile-image" id="profile-image" src=""/>
-                    <div class="profile-tag">PRO</div> <!-- TODO: js dynamic -->
+                    <div class="profile-tag" id="profile-tag"> </div> {# js-driven #}
 
                     <div class="score-container">
-                        <p class="username-input score">{{user_data['points']}}</p>
+                        <p class="username-input score" id="profile-score"> </p> {# js-driven #}
                         <p class="username-input score-unit">punti</p>
                     </div>
                     
@@ -82,11 +83,11 @@
         <section class="stat-grid">
             <div class="cell-grid">
                 <p class="cell-title">Blocchi creati</p>
-                <h3 class="cell-value">{{ routes_data | length }}</h3> <!-- TODO: js dynamic -->
+                <h3 class="cell-value" id="stat-created-n"> </h3> {# js-driven #}
             </div>
             <div class="cell-grid">
                 <p class="cell-title">Grado più elevato</p>
-                <h3 class="cell-value">E</h3> <!-- TODO: js dynamic -->
+                <h3 class="cell-value" id="stat-created-hardest"> </h3> {# js-driven #}
             </div>
         </section>
 
@@ -267,11 +268,9 @@
 
 
 <script>
-    const user_data = {{ user_data | default(false) | tojson }}
-
     const username_created = {{ username_created | default(false) | tojson }}
     createUsername(username_created)
 
     const username_changed = {{ username_changed | default(false) | tojson }}
-    changeUsername(username_changed, user_data["user_color"])
+    changeUsername(username_changed)
 </script>

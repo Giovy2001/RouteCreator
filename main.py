@@ -30,6 +30,7 @@ app.add_url_rule("/save_route",                 view_func=create.save_route,    
 from pages.backend import backend_profile
 
 app.add_url_rule("/backend_update_color",       view_func=backend_profile.update_color, methods=["POST"])
+app.add_url_rule("/backend_get_profile",        view_func=backend_profile.get_profile,  methods=["POST"])
 
 
 if __name__ == "__main__":
